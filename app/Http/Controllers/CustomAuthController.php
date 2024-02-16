@@ -13,4 +13,9 @@ class CustomAuthController extends Controller
     public function registration(){
         return view ("auth.registration");
     }
+
+    public function registerUser(Request $request)
+    {
+        echo 'Value posted';
+    }
 }

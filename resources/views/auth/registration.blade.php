@@ -13,7 +13,8 @@
             <div class="col-md-4 col-md-offset-4" style="margin-top:20px;">
                 <h4>Registration</h4>
                 <hr>
-                <form>
+                <form action="{{route('register-use')}}" method="post">
+                    @csrf
                     <div class="form-group">
                         <label for="name">Full name</label>
                         <input type="text" class="form-control" placeholder="Enter fullname" name="name" value="">
