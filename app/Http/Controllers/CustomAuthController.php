@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class CustomAuthController extends Controller
 {
@@ -10,12 +13,19 @@ class CustomAuthController extends Controller
     {
         return view ("auth.login");
     }
+
     public function registration(){
         return view ("auth.registration");
     }
 
     public function registerUser(Request $request)
     {
-        echo 'Value posted';
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:users',
+            'password'=>'required|min:5|max:12'
+        ]);
+
+        
     }
 }

@@ -17,17 +17,20 @@
                     @csrf
                     <div class="form-group">
                         <label for="name">Full name</label>
-                        <input type="text" class="form-control" placeholder="Enter fullname" name="name" value="">
+                        <input type="text" class="form-control" placeholder="Enter fullname" name="name" value="{{old('name')}}">
+                        <span class="text-danger">@error('name') {{$message}} @enderror</span>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" placeholder="Enter Email" name="email" value="">
+                        <input type="text" class="form-control" placeholder="Enter Email" name="email" value="{{old('email')}}">
+                        <span class="text-danger">@error('email') {{$message}} @enderror</span>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" placeholder="Enter Password" name="password" value="">
+                        <input type="password" class="form-control" placeholder="Enter Password" name="password" value="{{old('password')}}">
+                        <span class="text-danger">@error('password') {{$message}} @enderror</span>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-block btn-primary" type="submit">Register</button>
