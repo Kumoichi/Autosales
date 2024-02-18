@@ -14,7 +14,14 @@
                 <h4>Registration</h4>
                 <hr>
                 <form action="{{route('register-use')}}" method="post">
+                    @if(Session::has('success'))
+                    <div class="alert alert-success">{{Session::get('success')}}</div>
+                    @endif
+                    @if(Session::has('fail'))
+                    <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                    @endif
                     @csrf
+
                     <div class="form-group">
                         <label for="name">Full name</label>
                         <input type="text" class="form-control" placeholder="Enter fullname" name="name" value="{{old('name')}}">
