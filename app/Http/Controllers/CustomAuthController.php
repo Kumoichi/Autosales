@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Session;
+use Illuminate\Support\Facades\Session;
+
 
 
 class CustomAuthController extends Controller
@@ -68,6 +69,19 @@ class CustomAuthController extends Controller
 
     public function dashboard()
     {
-        return "Welcome!! to you dashboard";
+        $data = array();
+        if(Session::has('loginId')){
+            $data = User::where('id','=', Session::get('loginId'))->first();
+        }
+        // compact is used for sending array type of data to the page.
+        return view('dashboard',compact('data'));
     }
+
+    public function logout(){
+        if(Session::has('loginId')){
+            Session::pull('loginId'); // Clear the loginId from the session
+        }
+        return redirect('login'); // Redirect to the login page
+    }
+    
 }
