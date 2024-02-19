@@ -24,3 +24,5 @@ Route::get('/registration', [CustomAuthController::class, 'registration']);
 
 // post
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-use');
+
+Route::post('login-user', [CustomAuthController::class,'loginUser'])->name('login-user');

@@ -41,6 +41,24 @@ class CustomAuthController extends Controller
             return back()->with('fail', 'something wrong');
         }
 
-        
+    }
+    public function loginUser(Request $request){
+        $request->validate([
+            'email'=>'required|email|unique:users',
+            'password'=>'required|min:5|max:12'
+        ]);
+
+        $user= User::where('email','=',$request->email)->first();
+        if($user){
+            // if(Hash::check($request->password,$user->password))
+            // {
+            //     $request
+            // }else{
+            //     return back()->with('fail','password not matches');
+            // }
+            
+        } else {
+            return back()->with('fail', 'This email is not registered');
+        }
     }
 }
