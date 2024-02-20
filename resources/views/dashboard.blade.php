@@ -15,8 +15,8 @@
                 <h4>Welcome to Dashboard</h4>
                 <table class="table">
                     <thead>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>{{$data->name}}</th>
+                        <th>{{$data->email}}</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
