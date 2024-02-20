@@ -18,9 +18,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/login', [CustomAuthController::class, 'login']);
+Route::get('/login', [CustomAuthController::class, 'login'])->middleware('alreadyLoggedIn');
 
-Route::get('/registration', [CustomAuthController::class, 'registration']);
+Route::get('/registration', [CustomAuthController::class, 'registration'])->middleware('alreadyLoggedIn');
 
 // post
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-use');
