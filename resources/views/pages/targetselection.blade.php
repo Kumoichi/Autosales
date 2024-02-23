@@ -3,70 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/targetselection.css') }}"> 
     <title>Sideways Triangle with Square</title>
-    <style>
-        .shape-container {
-            display: flex;
-            float:left;
-        }
-        .triangle {
-            width: 0;
-            height: 0;
-            border-top: 60px solid transparent;
-            border-bottom: 61px solid transparent;
-            border-left: 60px solid #11A7B7;
-        }
-        .square {
-            position: relative;
-            width: 170px;
-            height: 120px;
-            background-color: #11A7B7;
-        }
-
-        .instruction{
-            position: absolute;
-            font-size: 16px;
-            color: white;
-            width: 150px;
-            top: 50px;
-            left: 80px;
-
-        }
-
-        .triangle-hide {
-            position: absolute;
-            z-index: 10;
-            width: 0;
-            height: 0;
-            border-top: 60px solid transparent;
-            border-bottom: 61px solid transparent;
-            border-left: 60px solid white; /* Match the square's background color */
-        }
-    </style>
+    @include('layout.topbar')
 </head>
-@include('layout.topbar')
-<body>
-    <div class="shape-container">
-        <div class="square">
-            <div class="instruction">配信条件指示</div>
-            <div class="triangle-hide"></div> 
+
+<body class="targetselection">
+    <div class="three-container">
+    <h1>メール配信指示設定</h1>
+
+    </div>
+</div>
+    <div class="three-container">
+        <div class="shape-container">
+            <div class="square">
+                <div class="instruction">配信条件指示</div>
+                <div class="triangle-hide"></div> 
+            </div>
+            <div class="triangle"></div>
         </div>
-        <div class="triangle"></div>
+
+        <div class="shape-container">
+            <div class="square">
+            <div class="instruction">配信内容確認</div>
+                <div class="triangle-hide"></div> 
+            </div>
+            <div class="triangle"></div>
+        </div>
+
+        <div class="shape-container">
+            <div class="square">
+            <div class="instruction3">配信タイミング指定</div>
+                <div class="triangle-hide"></div> 
+            </div>
+            <div class="triangle"></div>
+        </div>
     </div>
 
-    <div class="shape-container">
-        <div class="square">
-            <div class="triangle-hide"></div> 
-        </div>
-        <div class="triangle"></div>
+    <div>
+        <a href="contentselection">yo</a>
     </div>
-
-    <div class="shape-container">
-        <div class="square">
-            <div class="triangle-hide"></div> 
-        </div>
-        <div class="triangle"></div>
-    </div>
-    
 </body>
 </html>

@@ -1,7 +1,22 @@
-/* .shape-container {
+
+h1{
+    text-align: center;
+    margin-top: 0; /* Remove margin */
+    padding-top: 0; /* Remove padding */
+}
+
+.three-container {
+    width: 70%;
+    margin: 1px 30px 0;
     display: flex;
-    float: left;
-    margin-right: 20px; 
+    justify-content: center; /* Horizontally center the containers */
+    align-items: center; /* Vertically center the containers */
+}
+
+
+.shape-container {
+    display: flex;
+    float:left;
 }
 
 .triangle {
@@ -9,23 +24,31 @@
     height: 0;
     border-top: 60px solid transparent;
     border-bottom: 61px solid transparent;
-    border-left: 60px solid #11A7B7; 
+    border-left: 60px solid #11A7B7;
 }
-
 .square {
     position: relative;
     width: 170px;
     height: 120px;
-    background-color: #11A7B7; 
+    background-color: #11A7B7;
 }
 
-.instruction {
+.instruction{
     position: absolute;
     font-size: 16px;
     color: white;
     width: 150px;
     top: 50px;
     left: 80px;
+}
+
+.instruction3{
+    position: absolute;
+    font-size: 16px;
+    color: white;
+    width: 150px;
+    top: 50px;
+    left: 65px;
 }
 
 .triangle-hide {
@@ -35,9 +58,18 @@
     height: 0;
     border-top: 60px solid transparent;
     border-bottom: 61px solid transparent;
-    border-left: 60px solid white; 
+    border-left: 60px solid white; /* Match the square's background color */
 }
 
-.shape-container:first-child .square {
-    background-color: green;
-} */
+
+
+.contentselection .shape-container + .shape-container .triangle {
+    /* Styles for the triangle inside the second and third .shape-container */
+    border-left: 60px solid gray;
+}
+
+.contentselection .shape-container + .shape-container .square {
+    /* Styles for the square inside the second and third .shape-container */
+    background-color: gray;
+}
+

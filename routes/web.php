@@ -31,4 +31,7 @@ Route::get('/dashboard', [CustomAuthController::class, 'dashboard'])->middleware
 Route::get('/logout',[CustomAuthController::class, 'logout']);
 Route::get('/listselection',[ListSelectionController::class, 'listselection']);
 Route::get('/targetselection',[SendingController::class, 'targetselection']);
+Route::get('/contentselection',[SendingController::class, 'contentselection']);
+
+
 Route::get('/testingpage', [CustomAuthController::class, 'testingpage']);

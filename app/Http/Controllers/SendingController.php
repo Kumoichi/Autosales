@@ -10,4 +10,9 @@ class SendingController extends Controller
     {
         return view('pages/targetselection');
     }
+
+    public function contentselection()
+    {
+        return view('pages/contentselection');
+    }
 }
