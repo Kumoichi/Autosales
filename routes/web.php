@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\ListSelectionController;
+use App\Http\Controllers\SendingController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,18 +17,18 @@ use App\Http\Controllers\CustomAuthController;
 |
 */
 
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('design');
 });
 
 
 Route::get('/login', [CustomAuthController::class, 'login'])->middleware('alreadyLoggedIn');
 
-Route::get('/registration', [CustomAuthController::class, 'registration'])->middleware('alreadyLoggedIn');
-
-// post
-Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-use');
-
 Route::post('/login-user', [CustomAuthController::class,'loginUser'])->name('login-user');
 Route::get('/dashboard', [CustomAuthController::class, 'dashboard'])->middleware('isLoggedIn');
 Route::get('/logout',[CustomAuthController::class, 'logout']);
+Route::get('/listselection',[ListSelectionController::class, 'listselection']);
+Route::get('/targetselection',[SendingController::class, 'targetselection']);
+Route::get('/testingpage', [CustomAuthController::class, 'testingpage']);

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+
+use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -16,72 +18,52 @@ class CustomAuthController extends Controller
         return view ("auth.login");
     }
 
-    public function registration(){
-        return view ("auth.registration");
-    }
-
-    public function registerUser(Request $request)
-    {
-        // this validate exists to get the users input.
-        $request->validate([
-            'name'=>'required',
-            'email'=>'required|email|unique:users',
-            'password'=>'required|min:5|max:12'
-        ]);
-
-        // Dynamic Property Assignment: Eloquent dynamically maps name,email,password
-        // columns to properties on the model.
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $res = $user->save();
-        if($res){
-            // back() is back to the previous page, with is to show the message, left side is stored in a session.
-            return back()->with('success','You have registered successfully');
-        } else {
-            return back()->with('fail', 'something wrong');
-        }
-
-    }
     public function loginUser(Request $request){
         $request->validate([
-            'email'=>'required|email',
-            'password'=>'required|min:5|max:12'
+            'user_id'=>'required',
+            'password'=>'required'
         ]);
-
-        //first email that matches
-        $user= User::where('email','=',$request->email)->first();
+    
+        // Query using Admin model and 'user_id' field
+        $user = Admin::where('user_id', $request->user_id)->first();
+    
         if($user){
-            if(Hash::check($request->password,$user->password))
+            // User with the provided 'user_id' exists, now check the password
+            if($request->password === $user->password)
             {
-                // user id is stored in session with the key name loginId
-                $request->session()->put('loginId',$user->id);
+                // Password matches, store the user's ID in the session
+                $request->session()->put('loginId', $user->user_id);
                 return redirect('dashboard');
             } else {
-                return back()->with('fail','password not matches');
+                // Password does not match
+                return back()->with('fail','Password does not match');
             }
-
         } else {
-            return back()->with('fail', 'This email is not registered');
+            // User with the provided 'user_id' does not exist
+            return back()->with('fail', 'User ID not found');
         }
-    }
-
-    public function dashboard()
-    {
-        $data = array();
-        if(Session::has('loginId')){
-            $data = User::where('id','=', Session::get('loginId'))->first();   
-        }
-        // compact is used for sending array type of data to the page.
-        return view('dashboard',compact('data'));
-    }
-
-    public function logout(){
-        if(Session::has('loginId')){
-            Session::pull('loginId'); // Clear the loginId from the session
-        }
-        return redirect('login'); // Redirect to the login page
     }
     
+
+    public function dashboard()
+{
+    $data = null;
+    if(Session::has('loginId')){
+        // Query the Admin model using the stored user ID
+        $data = Admin::find(Session::get('loginId'));   
+    }
+    return view('dashboard', compact('data'));
+}
+
+public function logout(){
+    // Clear the login ID from the session when logging out
+    if(Session::has('loginId')){
+        Session::forget('loginId'); // Change Session::pull to Session::forget
+    }
+    return redirect('login'); // Redirect to the login page
+}
+
+public function testingpage() {
+    return view('testingpage');
+}
 }
