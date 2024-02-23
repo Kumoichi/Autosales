@@ -32,6 +32,8 @@ Route::get('/logout',[CustomAuthController::class, 'logout']);
 Route::get('/listselection',[ListSelectionController::class, 'listselection']);
 Route::get('/targetselection',[SendingController::class, 'targetselection']);
 Route::get('/contentselection',[SendingController::class, 'contentselection']);
+Route::get('/timeselection',[SendingController::class, 'timeselection']);
+
 
 
 Route::get('/testingpage', [CustomAuthController::class, 'testingpage']);

@@ -15,4 +15,9 @@ class SendingController extends Controller
     {
         return view('pages/contentselection');
     }
+
+    public function timeselection()
+    {
+        return view('pages/timeselection');
+    }
 }
