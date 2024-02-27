@@ -58,28 +58,24 @@ h1{
     height: 0;
     border-top: 60px solid transparent;
     border-bottom: 61px solid transparent;
-    border-left: 60px solid white; /* Match the square's background color */
+    border-left: 60px solid white; 
 }
 
 
 
 .targetselection .shape-container + .shape-container .triangle {
-    /* Styles for the triangle inside the second and third .shape-container */
     border-left: 60px solid gray;
 }
 
 .targetselection .shape-container + .shape-container .square {
-    /* Styles for the square inside the second and third .shape-container */
     background-color: gray;
 }
 
 .contentselection .shape-container + .shape-container + .shape-container .triangle {
-    /* Styles for the triangle inside the second and third .shape-container */
     border-left: 60px solid gray;
 }
 
 .contentselection .shape-container + .shape-container + .shape-container .square {
-    /* Styles for the square inside the second and third .shape-container */
     background-color: gray;
 }
 

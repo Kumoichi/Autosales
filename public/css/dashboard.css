@@ -1,17 +1,17 @@
 .main-menu {
-    width: 300px; /* Adjust as needed */
-    height: 50px; /* Adjust as needed */ 
+    width: 300px; 
+    height: 50px; 
     font-size: 30px;
     text-align: center;
     font-weight: bold; 
     color: gray;
-    line-height: 50px; /* Vertically centers text */
-    margin: 20px auto 0; /* 上部マージンを追加し、水平方向にセンタリング */
+    line-height: 50px; 
+    margin: 20px auto 0; 
 }
 
 .choosing {
     text-align:center;
-    margin-top: 10px; /* Adjust as needed */
+    margin-top: 10px; 
 }
 
 .whole-block{
@@ -33,19 +33,19 @@
     width: 240px;
     height: 150px;
     background-color: #11A7B7;
-    margin: 10px; /* Margin around each box */
+    margin: 10px; 
     display: flex;
-    flex-direction: column; /* Arrange children elements in a column */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
 }
 
 .box i {
-    margin-bottom: 10px; /* Add some spacing between the icon and the text */
+    margin-bottom: 10px; 
 }
 
 
 a {
     text-decoration: none;
-    color: inherit; /* Ensures that the anchor text color inherits from its parent */
+    color: inherit; 
 }

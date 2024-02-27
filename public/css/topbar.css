@@ -1,19 +1,17 @@
- /* CSS for the top bar */
+
  .top-bar {
-    color: #fff; /* Text color */
-    padding: 10px 20px; /* Padding */
-    display: flex; /* Use flexbox for layout */
-    align-items: cent er; /* Center items vertically */
-    justify-content: space-between; /* Space items evenly */
+    color: #fff; 
+    padding: 10px 20px; 
+    display: flex; 
+    align-items: cent er; 
+    justify-content: space-between; 
   }
   
-  /* CSS for the logo */
   .logo img {
-    width: 50px; /* Width of the logo */
-    height: auto; /* Maintain aspect ratio */
+    width: 50px; 
+    height: auto; 
   }
   
-  /* CSS for the title */
   .title {
     color: gray;
     text-align: center;
@@ -25,29 +23,27 @@
     width: 200px;
   }
 
-/* CSS for the logout button */
 .logout-button {
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
-        background-color: #767676; /* Gray background color */
-        color: white; /* Text color */
-        padding: 15px; /* Padding */
-        border-radius: 15px; /* Rounded corners */
-        text-decoration: none; /* Remove default link underline */
-        display: inline-block; /* Display as inline block */
-        margin-top: 20px; /* Margin from the top */
+        justify-content: center; 
+        align-items: center; 
+        background-color: #767676; 
+        color: white; 
+        padding: 15px; 
+        border-radius: 15px; 
+        text-decoration: none; 
+        display: inline-block; 
+        margin-top: 20px; 
         margin-left:20px;
-        width: 130px; /* Fixed width */
-        height: 20px; /* Fixed height */
-        text-align: center; /* Center text horizontally */
+        width: 130px; 
+        height: 20px; 
+        text-align: center; 
     }
 
     .dashboard-page .logout-button + .logout-button {
       display: none;
   }
 
-    /* CSS for hover effect */
     .logout-button:hover {
-        background-color: #999; /* Darker gray on hover */
+        background-color: #999; 
     }
 

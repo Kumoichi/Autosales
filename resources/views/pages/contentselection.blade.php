@@ -9,5 +9,8 @@
 <div>
     @include('layout.selection')
 </div>
+
+<p><span style = "color: red;">＊</span>ターゲットを選択する</p>
+
 </body>
 </html>

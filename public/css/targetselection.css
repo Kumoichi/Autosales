@@ -1,0 +1,53 @@
+.green-underline {
+    text-decoration: none;
+    position: relative;
+    text-align: center;
+    color: gray;
+    font-size: 20px;
+    margin: 0px; 
+    padding: 10px;
+}
+
+.green-underline::after {
+    content: '';
+    position: absolute;
+    left: 43%;
+    bottom: -2px;
+    width: 190px;
+    height: 2px;
+    background-color: #11A7B7;
+}
+
+
+.green-underline {
+    text-decoration: none;
+    position: relative;
+    text-align: center;
+    color: gray;
+    font-size: 20px;
+    margin: 0px; 
+    padding: 10px;
+}
+
+.green-underline::after {
+    content: '';
+    position: absolute;
+    left: 43%;
+    bottom: -2px;
+    width: 190px;
+    height: 2px;
+    background-color: #11A7B7;
+}
+
+.target-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.target-list li {
+    display: block;
+    margin: 10px auto;
+    text-decoration: underline;
+}

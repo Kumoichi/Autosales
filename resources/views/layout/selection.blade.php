@@ -39,9 +39,5 @@
             <div class="triangle"></div>
         </div>
     </div>
-
-    <div>
-        <a href="contentselection">yo</a>
-    </div>
 </body>
 </html>
