@@ -6,12 +6,12 @@
     <title>Another Page</title>
 </head>
 <body>
-    <h1>Welcome to Another Page</h1>
+    <h1>Welcome to Another Pag</h1>
     
     @if(isset($name))
-        <p>Hello, {{ $name }}!</p>
+        <p>Testing, {{ $name }}!</p>
     @else
-        <p>Hello, Guest!</p>
+        <p>Test fail</p>
     @endif
 </body>
 </html>
