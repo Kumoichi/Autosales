@@ -19,7 +19,7 @@ use App\Http\Controllers\SendingController;
 
 
 
-Route::get('/', function () {
+Route::get('/designs', function () {
     return view('design');
 });
 
@@ -33,6 +33,11 @@ Route::get('/listselection',[ListSelectionController::class, 'listselection']);
 Route::get('/targetselection',[SendingController::class, 'targetselection']);
 Route::get('/contentselection',[SendingController::class, 'contentselection']);
 Route::get('/timeselection',[SendingController::class, 'timeselection']);
+
+
+Route::get('/get-target-name/{id}', [SendingController::class, 'targetName'])->name('get-target-name');
+
+Route::get('/another-page', [SendingController::class, 'anotherPage'])->name('another-page');
 
 
 

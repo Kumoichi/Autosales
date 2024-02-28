@@ -1,16 +1,18 @@
 
 h1{
     text-align: center;
-    margin-top: 0; /* Remove margin */
-    padding-top: 0; /* Remove padding */
+    margin-top: 0; 
+    padding-top: 0; 
+    color: gray;
 }
 
 .three-container {
     width: 70%;
     margin: 1px 30px 0;
     display: flex;
-    justify-content: center; /* Horizontally center the containers */
-    align-items: center; /* Vertically center the containers */
+    justify-content: center; 
+    align-items: center; 
+
 }
 
 
@@ -78,4 +80,5 @@ h1{
 .contentselection .shape-container + .shape-container + .shape-container .square {
     background-color: gray;
 }
+
 
