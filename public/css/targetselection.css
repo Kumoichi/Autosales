@@ -1,4 +1,11 @@
 
+.white-back{
+    background-color: white;
+    margin: auto;
+    width: 60%;
+}
+
+
 .green-underline {
     text-decoration: none;
     position: relative;
@@ -92,4 +99,10 @@ ul {
 li {
     vertical-align: middle; 
     margin-bottom: 10px; 
+}
+
+body{
+    background-image: url('/images/background.jpeg');
+            background-size: cover; 
+            background-position: center; 
 }

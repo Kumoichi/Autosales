@@ -7,11 +7,14 @@
 
     <title>Document</title>
 </head>
+
 <body class="targetselection">
 <div>
     @include('layout.selection')
 </div>
 
+
+<div class="white-back">
 <p class="green-underline"><span style="color: red;">＊</span>ターゲットを選択する</p>
 
 <div class="centered-container">
@@ -32,9 +35,7 @@
     <a href="dashboard" class="pagemovement-button">前へもどる</a>
     <a href="contentselection" class="pagemovement-button">コンテンツを選択</a>
 </div>
-
-
-
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
