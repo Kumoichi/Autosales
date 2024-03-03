@@ -22,13 +22,13 @@
 
 
 .centered-container {
-    width: 20%;
+    width: 30%;
     margin:auto;
     margin-top:20px;
     display: flex;
     justify-content: center;
     align-items: flex-start; 
-    max-height: 200px; 
+    max-height: 150px; 
     overflow-y: auto; 
     background-size: cover; 
 }
