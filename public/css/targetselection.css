@@ -19,6 +19,25 @@
     height: 2px;
     background-color: #11A7B7;
 }
+.center-container {
+    text-align: center;
+}
+
+.pagemovement-button{
+    justify-content: center; 
+        align-items: center; 
+        background-color: #11A7B7; 
+        color: white; 
+        padding: 15px; 
+        border-radius: 15px; 
+        text-decoration: none; 
+        display: inline-block; 
+        margin-top: 20px; 
+        margin-left:20px;
+        width: 130px; 
+        height: 20px; 
+        text-align: center; 
+}
 
 
 .centered-container {

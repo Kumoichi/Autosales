@@ -28,6 +28,12 @@
     @endif
 </div>
 
+<div class="center-container">
+    <a href="dashboard" class="pagemovement-button">前へもどる</a>
+    <a href="contentselection" class="pagemovement-button">コンテンツを選択</a>
+</div>
+
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -19,7 +19,7 @@
 </div>
 <div class="container">
   <a href="logout" class="logout-button">ログアウト>></a>
-  <a href="logout" class="logout-button">メインメニュー</a>
+  <a href="dashboard" class="logout-button">メインメニュー</a>
 </div>
 </body>
 </html> 
