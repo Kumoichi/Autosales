@@ -28,19 +28,18 @@
     @endif
 </div>
 
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+    sessionStorage.removeItem('selectedTargets');
+    var selectedTargets = [];
     $(document).ready(function() {
         $('.circle').click(function() {
             $(this).toggleClass('clicked');
             
             var targetName = $(this).data('target');
-            
-            // Reset sessionStorage
-            sessionStorage.removeItem('selectedTargets');
-            
-            // Toggle selected target in session storage
-            var selectedTargets = [];
+           
             selectedTargets.push(targetName);
             sessionStorage.setItem('selectedTargets', JSON.stringify(selectedTargets));
         });

@@ -33,7 +33,6 @@
     background-size: cover; 
 }
 
-
 .target-list {
     list-style-type: none;
     padding: 0;
@@ -68,7 +67,7 @@ ul {
 }
 
 .circle.clicked {
-    background-color: blue; 
+    background-color: #11A7B7; 
 }
 
 li {
