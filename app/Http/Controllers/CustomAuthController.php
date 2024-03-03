@@ -53,7 +53,7 @@ public function logout(){
     if(Session::has('loginId')){
         Session::forget('loginId'); 
     }
-    return redirect('login'); 
+    return redirect('login'); // Redirect to the login page
 }
 
 public function testingpage() {

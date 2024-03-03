@@ -9,7 +9,9 @@ class SendingController extends Controller
 {
     public function targetselection()
     {
-        return view('pages/targetselection');
+        $target = Target::all();
+        $name = Target::pluck('name');
+        return view('pages/targetselection',['names' => $name]);
     }
 
     public function contentselection()
@@ -23,21 +25,24 @@ class SendingController extends Controller
     }
 
 
-    public function targetName($id)
+    public function targetName()
     {
-        $target = Target::find($id);
+        $target = Target::all();
 
-        if ($target) {
-            $name = $target->name;
-            return view('another-page', ['name' => $name]);
-        } else {
-            return "Target not found";
-        }
+        $name = Target::pluck('name');
+
+        return view('another-page',['names' => $name]);
     }
 
     public function anotherPage()
     {
-        $name = session('name'); // Get the name from session if needed
-        return view('another-page', ['name' => $name]);
+        return view('another-page');
+    }
+
+    public function showThirdPage()
+    {
+        $selectedTargets = session()->get('selectedTargets', []);
+        
+        return view('third-page', ['selectedTargets' => $selectedTargets]);
     }
 }

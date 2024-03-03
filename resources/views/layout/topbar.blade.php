@@ -13,7 +13,7 @@
     <img src="{{ asset('images/saleslab.png')}}" alt="Logo" style="height:80px; width:220px;">
   </div>
   <div class="title">
-    <h1>ウェブアプリ名称</h1> 
+    <h2>ウェブアプリ名称</h2> 
   </div>
   <div></div> 
 </div>

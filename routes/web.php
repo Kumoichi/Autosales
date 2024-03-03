@@ -35,9 +35,9 @@ Route::get('/contentselection',[SendingController::class, 'contentselection']);
 Route::get('/timeselection',[SendingController::class, 'timeselection']);
 
 
-Route::get('/get-target-name/{id}', [SendingController::class, 'targetName'])->name('get-target-name');
-
+Route::get('/get-target-name', [SendingController::class, 'targetName'])->name('get-target-name');
 Route::get('/another-page', [SendingController::class, 'anotherPage'])->name('another-page');
+Route::get('/third-page', [SendingController::class, 'showThirdPage'])->name('third-page');
 
 
 

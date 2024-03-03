@@ -1,23 +1,3 @@
-.green-underline {
-    text-decoration: none;
-    position: relative;
-    text-align: center;
-    color: gray;
-    font-size: 20px;
-    margin: 0px; 
-    padding: 10px;
-}
-
-.green-underline::after {
-    content: '';
-    position: absolute;
-    left: 43%;
-    bottom: -2px;
-    width: 190px;
-    height: 2px;
-    background-color: #11A7B7;
-}
-
 
 .green-underline {
     text-decoration: none;
@@ -32,12 +12,27 @@
 .green-underline::after {
     content: '';
     position: absolute;
-    left: 43%;
+    left: 50%; 
+    transform: translateX(-50%); 
     bottom: -2px;
     width: 190px;
     height: 2px;
     background-color: #11A7B7;
 }
+
+
+.centered-container {
+    width: 20%;
+    margin:auto;
+    margin-top:20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    max-height: 200px; 
+    overflow-y: auto; 
+    background-size: cover; 
+}
+
 
 .target-list {
     list-style-type: none;
@@ -50,4 +45,33 @@
     display: block;
     margin: 10px auto;
     text-decoration: underline;
+}
+
+
+ul {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+.circle {
+    margin-right: 10px; 
+    text-decoration: none; 
+    color: white;          
+    cursor: pointer;       
+    display: inline-block; 
+    width: 15px;           
+    height: 15px;          
+    border-radius: 50%;    
+    border: 2px solid gray; 
+    text-align: center;    
+    vertical-align: middle; 
+}
+
+.circle.clicked {
+    background-color: blue; 
+}
+
+li {
+    vertical-align: middle; 
+    margin-bottom: 10px; 
 }

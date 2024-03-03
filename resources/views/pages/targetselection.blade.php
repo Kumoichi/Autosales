@@ -14,14 +14,38 @@
 
 <p class="green-underline"><span style="color: red;">＊</span>ターゲットを選択する</p>
 
-<ul class="target-list">
-  <p>〇</p><li>ターゲットA</li>
-  <li>ターゲットB</li>
-  <li>ターゲットC</li>
-</ul>
+<div class="centered-container">
+    @if(isset($names) && $names->count() > 0)
+        <ul id="targetList">
+            @foreach($names as $name)
+                <li>
+                    <a href="#" class="circle" data-target="{{ $name }}"></a> {{ $name }}
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p>No names found</p>
+    @endif
+</div>
 
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.circle').click(function() {
+            $(this).toggleClass('clicked');
+            
+            var targetName = $(this).data('target');
+            
+            // Reset sessionStorage
+            sessionStorage.removeItem('selectedTargets');
+            
+            // Toggle selected target in session storage
+            var selectedTargets = [];
+            selectedTargets.push(targetName);
+            sessionStorage.setItem('selectedTargets', JSON.stringify(selectedTargets));
+        });
+    });
+</script>
 
 </body>
 </html>

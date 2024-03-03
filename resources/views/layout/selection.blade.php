@@ -10,7 +10,7 @@
 
 <body>
     <div class="three-container">
-    <h1>メール配信指示設定</h1>
+    <h2>メール配信指示設定</h2>
 
     </div>
 </div>
