@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\ListSelectionController;
 use App\Http\Controllers\SendingController;
+use App\Http\Controllers\SelectedDateController;
 
 
 /*
@@ -30,15 +31,17 @@ Route::post('/login-user', [CustomAuthController::class,'loginUser'])->name('log
 Route::get('/dashboard', [CustomAuthController::class, 'dashboard'])->middleware('isLoggedIn');
 Route::get('/logout',[CustomAuthController::class, 'logout']);
 Route::get('/listselection',[ListSelectionController::class, 'listselection']);
+
+
+// SendingController
 Route::get('/targetselection',[SendingController::class, 'targetselection']);
 Route::get('/contentselection',[SendingController::class, 'contentselection']);
 Route::get('/timeselection',[SendingController::class, 'timeselection']);
-
-
 Route::get('/get-target-name', [SendingController::class, 'targetName'])->name('get-target-name');
 Route::get('/another-page', [SendingController::class, 'anotherPage'])->name('another-page');
 Route::get('/third-page', [SendingController::class, 'showThirdPage'])->name('third-page');
 
-
+Route::get('/select-date', [SelectedDateController::class, 'showForm'])->name('show.date.form');
+Route::post('/save-date', [SelectedDateController::class, 'saveDate'])->name('save.date');
 
 Route::get('/testingpage', [CustomAuthController::class, 'testingpage']);
