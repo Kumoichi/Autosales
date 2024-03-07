@@ -1,0 +1,19 @@
+.centralize form div {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.centralize form div i {
+    margin-right: 20px; /* Adjust spacing between icon and input */
+}
+
+.styled-input {
+    font-size: 15px;
+    color: gray;
+    width: 160px;
+    height: 25px;
+    margin-right: 15px; /* Adjust margin-right as needed */
+}
+

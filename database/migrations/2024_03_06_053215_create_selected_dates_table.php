@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('selected_date_with_day')->default('');
             $table->string('selected_time')->default('');
+            $table->string('selected_frequency')->default('');
             $table->timestamps();
         });
     }

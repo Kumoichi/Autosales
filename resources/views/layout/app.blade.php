@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/timeselect.css') }}" rel="stylesheet">
 
 </head>
 <body>
