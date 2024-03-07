@@ -42,6 +42,7 @@ Route::get('/another-page', [SendingController::class, 'anotherPage'])->name('an
 Route::get('/third-page', [SendingController::class, 'showThirdPage'])->name('third-page');
 
 Route::get('/select-date', [SelectedDateController::class, 'showForm'])->name('show.date.form');
-Route::post('/save-date', [SelectedDateController::class, 'saveDate'])->name('save.date');
+Route::post('/save-date', [SelectedDateController::class, 'saveDateAndTime'])->name('save.date');
+
 
 Route::get('/testingpage', [CustomAuthController::class, 'testingpage']);

@@ -1,12 +1,19 @@
 @extends('layout.app')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <div class="centralize">
-    <h2>Select Date</h2>
+    <i class="fa-solid fa-calendar-days"></i>
     <form action="{{ route('save.date') }}" method="post">
     @csrf
     <input type="text" id="selected_date" name="selected_date">
     <input type="hidden" id="selected_date_with_day" name="selected_date_with_day">
+
+    <div style="margin-top: 20px;">
+        <input type="text" id="selected_time" name="selected_time">
+    </div>
+
     <button type="submit">Submit</button>
 </form>
 </div>
@@ -45,6 +52,12 @@
             document.getElementById('selected_date').value = formattedDateWithDay;
             document.getElementById('selected_date_with_day').value = formattedDateWithDay;
         }
+    });
+    flatpickr("#selected_time", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i", // 24-hour format
+        time_24hr: true
     });
 
     function formatDateWithDay(date) {

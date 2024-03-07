@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('selected_dates', function (Blueprint $table) {
             $table->id();
-            $table->string('selected_date_with_day')->default(''); // Set a default empty string value
+            $table->string('selected_date_with_day')->default('');
+            $table->string('selected_time')->default('');
             $table->timestamps();
         });
     }

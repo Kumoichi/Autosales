@@ -13,17 +13,20 @@ class SelectedDateController extends Controller
         return view('calendar_form');
     }
     
-    public function saveDate(Request $request)
+    public function saveDateAndTime(Request $request)
     {
         $request->validate([
             
             'selected_date_with_day' => 'required|string',
+            'selected_time' => 'required|string'
         ]);
 
         $selectedDateWithDay = $request->selected_date_with_day;
+        $selectedTime = $request->selected_time;
 
         SelectedDate::create([
             'selected_date_with_day' => $selectedDateWithDay,
+            'selected_time' => $selectedTime,
         ]);
 
         return redirect()->back()->with('success', 'Date selected successfully.');

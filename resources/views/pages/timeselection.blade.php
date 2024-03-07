@@ -8,9 +8,14 @@
     <title>Document</title>
 </head>
 <body class="timeselection">
+
+
 <div>
     @include('layout.selection')
-    
+
+    <p class="green-underline">配信タイミングの指定</p>
+
+    <p class="underwords">必須項目は（<span style = "color: red;">＊</span>）すべて選択してください</p>
     @include('calendar_form')
 </div>
 </body>
