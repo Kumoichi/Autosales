@@ -1,18 +1,11 @@
-.centralize {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    height: 100vh; 
-}
-
-
 .green-underline {
+
     text-decoration: none;
     position: relative;
     text-align: center;
     color: gray;
     font-size: 20px;
-    margin-top: 0px; 
+     
     padding: 10px;
 }
 
@@ -37,5 +30,43 @@
     font-size: 15px;
     margin: 0px; 
     padding: 10px;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-wrapper {
+    display: flex;
+}
+
+.pagemovement-button {
+    background-color: #11A7B7;
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    text-decoration: none;
+    width: 130px; /* Adjust width as needed */
+    text-align: center;
+    margin-right: 10px; /* Adjust margin as needed */
+}
+
+.firstpage-button {
+    background-color: #11A7B7;
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    text-decoration: none;
+    width: 130px; /* Adjust width as needed */
+    text-align: center;
+    margin-top: 10px; /* Adjust margin as needed */
+    margin-right: 180px; /* Adjust margin-left as needed */
 }
 

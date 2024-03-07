@@ -1,3 +1,10 @@
+.centralize {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+   
+}
+
 .centralize form div {
     margin-top: 20px;
     display: flex;
