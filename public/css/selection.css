@@ -55,12 +55,12 @@ h2{
 
 .triangle-hide {
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     width: 0;
     height: 0;
     border-top: 50px solid transparent;
     border-bottom: 51px solid transparent;
-    border-left: 60px solid white; 
+    border-left: 60px solid white;
 }
 
 
