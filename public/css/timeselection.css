@@ -84,12 +84,14 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 50%;
     max-width: 600px;
 }
 
@@ -107,3 +109,27 @@
     cursor: pointer;
 }
 
+.modal-title
+{
+    text-align: center;
+    color: gray;
+    font-size: 20px;
+}
+
+.back-button{
+    background-color: #11A7B7;
+    width: 50px;
+    height: 30px;
+    color: white;
+    border: #11A7B7;
+    border-radius: 10px;
+}
+
+.confirm-button{
+    background-color: gray;
+    width: 50px;
+    height: 30px;
+    color: white;
+    border: #11A7B7;
+    border-radius: 10px;
+}
