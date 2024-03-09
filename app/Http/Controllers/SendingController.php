@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Target;
+use App\Models\Template;
 
 use Illuminate\Http\Request;
 
@@ -34,6 +35,13 @@ class SendingController extends Controller
         return view('another-page',['names' => $name]);
     }
 
+    public function templateselection()
+    {
+        $template = Template::all();
+        $name = Template::pluck('template');
+        return view('pages/templateselection',['template' => $template]);
+    }
+
     public function anotherPage()
     {
         return view('another-page');
@@ -45,4 +53,5 @@ class SendingController extends Controller
         
         return view('third-page', ['selectedTargets' => $selectedTargets]);
     }
+    
 }

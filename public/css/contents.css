@@ -1,0 +1,33 @@
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.containers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(3, 1fr); /* 3 rows */
+    gap: 10px; /* Adjust as needed */
+}
+
+.containers div {
+    border: 1px solid black; /* Border for visualization */
+    padding: 10px; /* Adjust as needed */
+}
+
+.skip-button {
+    background-color: #11A7B7;
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    text-decoration: none;
+    display: block; /* Change display to block to make it take up full width */
+    text-align: center;
+    width: 70%;
+    margin: 0 auto; /* Use margin: 0 auto; for horizontal centering */
+    margin-top: 20px; /* Adjust as needed */
+}

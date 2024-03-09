@@ -32,46 +32,6 @@
     padding: 10px;
 }
 
-.center-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.center-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.button-wrapper {
-    display: flex;
-}
-
-.pagemovement-button {
-    background-color: #11A7B7;
-    color: white;
-    padding: 15px;
-    border-radius: 15px;
-    text-decoration: none;
-    width: 130px; 
-    text-align: center;
-    margin-right: 10px; 
-}
-
-.firstpage-button {
-    background-color: #11A7B7;
-    color: white;
-    padding: 15px;
-    border-radius: 15px;
-    text-decoration: none;
-    width: 130px; 
-    text-align: center;
-    margin-top: 10px; 
-    margin-right: 180px; 
-}
-
-
 .modal {
     display: none;
     position: fixed;
