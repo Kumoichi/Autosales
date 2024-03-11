@@ -1,18 +1,21 @@
 .template-one {
-    width: 500px; /* Set width */
-    height: auto; /* Set height to auto for dynamic height */
-    margin: 0 auto; /* Center horizontally */
-    margin-top: 50px; /* Adjust top margin as needed */
+    width: 500px; 
+    height: auto; 
+    margin: 0 auto; 
+    margin-top: 50px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px; /* Adjust font size as needed */
-    border: 1px solid gray; /* Set border color to gray */
-    word-break: break-all; /* Break long words and wrap them */
-    user-select: text; /* Allow text selection */
-    cursor: pointer; /* Show pointer cursor on hover */
+    font-size: 24px; 
+    border: 1px solid gray; 
+    word-break: break-all; 
+    user-select: text; 
+    cursor: pointer; 
+    padding: 20px;
+    border-width: 2px;
 }
 
 .template-one.clicked {
-    border-color: blue; /* Change border color when clicked */
+    border-color:#11A7B7; 
+    border-width: 3px;
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Target;
 use App\Models\Template;
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
 
@@ -47,11 +48,23 @@ class SendingController extends Controller
         return view('another-page');
     }
 
-    public function showThirdPage()
-    {
-        $selectedTargets = session()->get('selectedTargets', []);
-        
-        return view('third-page', ['selectedTargets' => $selectedTargets]);
-    }
+
+public function showThirdPage()
+{
+    // Retrieve the selected template content from the session
+    $selectedTemplateContent = session('selectedTemplateContent');
+    
+
+    // Retrieve the selected targets from the session
+    $selectedTargets = Session::get('selectedTargets', []);    // dd($selectedTargets);
+    // dd(session()->all());
+
+    return view('third-page', [
+        'selectedTemplateContent' => $selectedTemplateContent,
+        'selectedTargets' => $selectedTargets
+    ]);
+}
+
     
 }
+

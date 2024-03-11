@@ -20,10 +20,10 @@
 
 <div class="white-back">
         <p class="green-underline">テンプレートを選択</p>
-        <a href="template" class="skip-button">テンプレートを選択せず、配信内容へ進む</a>
+        <a href="third-page" class="skip-button">テンプレートを選択せず、配信内容へ進む</a>
 
         @foreach($template as $templateItem)
-    <div class="template-one" onclick="selectTemplate(this, '{{ $templateItem->id }}')">
+        <div class="template-one" onclick="selectTemplate(this, '{{ $templateItem->id }}', '{{ $templateItem->template }}')">
         {!! $templateItem->template !!}
     </div>
 @endforeach
@@ -44,17 +44,35 @@
 
 
 <script>
-function selectTemplate(selectedDiv, templateId) {
-    // Remove 'clicked' class from all .template-one divs
+function selectTemplate(selectedDiv, templateId, templateContent) {
+    console.log('Template ID:', templateId); // Log the template ID
+    console.log('Template Content:', templateContent); // Log the template content
+
     var templateDivs = document.querySelectorAll('.template-one');
     templateDivs.forEach(function(div) {
         div.classList.remove('clicked');
     });
-    
-    // Add 'clicked' class to the selected div
+    // Add 'clicked' class to the clicked div
     selectedDiv.classList.add('clicked');
-    
-    // You can handle other selection actions here
+
+    // Store the selected template ID and content in sessionStorage
+    sessionStorage.setItem('selectedTemplateId', templateId);
+    sessionStorage.setItem('selectedTemplateContent', templateContent);
 }
+
+
+
+// function selectTemplate(selectedDiv, templateId) {
+//     // Remove 'clicked' class from all .template-one divs
+//     var templateDivs = document.querySelectorAll('.template-one');
+//     templateDivs.forEach(function(div) {
+//         div.classList.remove('clicked');
+//     });
+    
+//     // Add 'clicked' class to the selected div
+//     selectedDiv.classList.add('clicked');
+    
+//     // You can handle other selection actions here
+// }
 
 </script>

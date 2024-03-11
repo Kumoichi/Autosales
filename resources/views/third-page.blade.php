@@ -14,9 +14,10 @@
     </style>
 </head>
 <body>
-    <h1>Third Page</h1>
-    <p>Selected Target Names:</p>
-    <div id="selectedTargetsList"><div>
+<h1>Thirds Page</h1>
+    <div id="selectedTargetsList"></div>
+    <div id="selectedTemplateContentContainer"></div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -31,6 +32,17 @@
                 });
             }
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var selectedTemplateContent = sessionStorage.getItem('selectedTemplateContent');
+            if (selectedTemplateContent) {
+                var selectedTemplateContentContainer = document.getElementById('selectedTemplateContentContainer');
+                selectedTemplateContentContainer.textContent = selectedTemplateContent;
+            }
+        });
+
+
     </script>
 </body>
-</html>
+</html> 
+
