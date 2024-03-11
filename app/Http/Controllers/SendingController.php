@@ -49,17 +49,16 @@ class SendingController extends Controller
     }
 
 
-public function showThirdPage()
+public function showSummaryPage()
 {
     // Retrieve the selected template content from the session
-    $selectedTemplateContent = session('selectedTemplateContent');
-    
+    $selectedTemplateContent = session()->get('selectedTemplateContent');
 
     // Retrieve the selected targets from the session
     $selectedTargets = Session::get('selectedTargets', []);    // dd($selectedTargets);
     // dd(session()->all());
 
-    return view('third-page', [
+    return view('summary-page', [
         'selectedTemplateContent' => $selectedTemplateContent,
         'selectedTargets' => $selectedTargets
     ]);

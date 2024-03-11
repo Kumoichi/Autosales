@@ -1,4 +1,12 @@
-.template-one {
+.container {
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100vh;
+}
+
+.template-display{
     width: 500px; 
     height: auto; 
     margin: 0 auto; 
@@ -13,9 +21,4 @@
     cursor: pointer; 
     padding: 20px;
     border-width: 2px;
-}
-
-.template-one.clicked {
-    border-color:#11A7B7; 
-    border-width: 3px;
 }

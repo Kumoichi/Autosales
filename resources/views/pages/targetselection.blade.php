@@ -37,7 +37,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             // Initialize selectedTargets array from sessionStorage
             var selectedTargets = JSON.parse(sessionStorage.getItem('selectedTargets')) || [];
@@ -55,6 +55,32 @@
                 }
             });
         });
-    </script>
+    </script> -->
+    <script>
+    $(document).ready(function() {
+        // Initialize selected target from sessionStorage
+        var selectedTarget = sessionStorage.getItem('selectedTarget');
+
+        $('.circle').click(function() {
+            var targetName = $(this).data('target');
+            
+            // If the clicked target is already selected, do nothing
+            if (selectedTarget === targetName) {
+                return;
+            }
+
+            // Remove 'clicked' class from previously selected target if exists
+            $('.circle').removeClass('clicked');
+            
+            // Add 'clicked' class to the clicked target
+            $(this).addClass('clicked');
+
+            // Update selected target in sessionStorage
+            selectedTarget = targetName;
+            sessionStorage.setItem('selectedTarget', selectedTarget);
+        });
+    });
+</script>
+
 </body>
 </html>

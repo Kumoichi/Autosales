@@ -43,7 +43,7 @@ Route::get('/templateselection',[SendingController::class, 'templateselection'])
 Route::get('/timeselection',[SendingController::class, 'timeselection']);
 Route::get('/get-target-name', [SendingController::class, 'targetName'])->name('get-target-name');
 Route::get('/another-page', [SendingController::class, 'anotherPage'])->name('another-page');
-Route::get('/third-page', [SendingController::class, 'showThirdPage'])->name('third-page');
+Route::get('/summary-page', [SendingController::class, 'showSummaryPage'])->name('summary-page');
 
 Route::get('/select-date', [SelectedDateController::class, 'showForm'])->name('show.date.form');
 Route::post('/save-date', [SelectedDateController::class, 'saveDateAndTime'])->name('save.date');

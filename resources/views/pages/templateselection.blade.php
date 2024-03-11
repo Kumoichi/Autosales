@@ -20,7 +20,7 @@
 
 <div class="white-back">
         <p class="green-underline">テンプレートを選択</p>
-        <a href="third-page" class="skip-button">テンプレートを選択せず、配信内容へ進む</a>
+        <a href="summary-page" class="skip-button">テンプレートを選択せず、配信内容へ進む</a>
 
         @foreach($template as $templateItem)
         <div class="template-one" onclick="selectTemplate(this, '{{ $templateItem->id }}', '{{ $templateItem->template }}')">
