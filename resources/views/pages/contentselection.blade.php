@@ -21,7 +21,7 @@
 
 <div class="white-back">
         <p class="green-underline">コンテンツを選択する</p>
-        <a href="template" class="skip-button">コンテンツを選択せず、テンプレート選択へ進む</a>
+        <a href="templateselection" class="skip-button">コンテンツを選択せず、テンプレート選択へ進む</a>
 
         <div class="image-container">
             <div class="containers">

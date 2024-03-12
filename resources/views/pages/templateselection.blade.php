@@ -33,8 +33,8 @@
     
     <div class="center-container">
         <div class="button-wrapper">
-            <a href="targetselection" class="pagemovement-button">前のページ</a>
-            <a href="templateselection" id="openModal" class="pagemovement-button">テンプレートを選択</a>
+            <a href="contentselection" class="pagemovement-button">前のページ</a>
+            <a href="summary-page" id="openModal" class="pagemovement-button">確認画面に進む</a>
         </div>
         <a href="targetselection" class="firstpage-button">最初から設定</a>
     </div>

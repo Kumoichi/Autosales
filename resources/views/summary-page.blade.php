@@ -5,16 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Third Page</title>
     <link rel="stylesheet" href="{{ asset('css/summary-page.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/bottomButton.css') }}"> 
+
 
 </head>
-<body>
-<h1>Thirds Page</h1>
+
+<body class="contentselection">
+<div>
+    @include('layout.selection')
+</div>
+
+<h1>Third Page</h1>
+
 <div class="container">
     <div id="selectedTarget"></div>
     <div class="template-display">
         <div id="selectedTemplateContentContainer"></div>
     </div>
 </div>
+<!-- 
+<div class="center-container">
+        <div class="button-wrapper">
+            <a href="templateselection" class="pagemovement-button">前へ戻る</a>
+            <a href="summary-page" id="openModal" class="pagemovement-button">配信画面の設定</a>
+        </div>
+        <a href="targetselection" class="firstpage-button">最初から設定</a>
+    </div> -->
 
 
     <script>
