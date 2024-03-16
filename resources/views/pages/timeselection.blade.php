@@ -12,10 +12,22 @@
 <div>
     @include('layout.selection')
 
-    <p class="green-underline">配信タイミングの指定</p>
+    <p class="green-underline"><span style="color: red;">＊</span>送信オプション</p>
 
-    <p class="underwords">必須項目は（<span style="color: red;">＊</span>）すべて選択してください</p>
-    @include('calendar_form')
+    <div class="button-choice">
+        <ul>
+        <li class="button-group">
+            <button class="circle-btn" id="circleBtn1"></button><span class="text">今すぐ送信</span>
+        </li>
+
+        <li class="button-group">
+            <button class="circle-btn" id="circleBtn2"></button><span class="text">予定としてスケジュール</span>
+        </li>
+    </ul>
+    </div>
+    
+
+    <div id="showMe"> @include('calendar_form')</div>
 
     <div class="center-container">
         <div class="button-wrapper">
@@ -54,6 +66,17 @@
 var ankenBox = document.getElementById('anken_box');
 var confirmButton = document.getElementById('confirmButton');
 
+document.getElementById('circleBtn1').addEventListener('click', function() {
+    this.style.backgroundColor = '#11A7B7';
+    document.getElementById('circleBtn2').style.backgroundColor = 'white'; // Revert color of second button
+    document.getElementById('showMe').style.display = 'none'; // Hide the "show me" div
+  });
+
+  document.getElementById('circleBtn2').addEventListener('click', function() {
+    this.style.backgroundColor = '#11A7B7';
+    document.getElementById('circleBtn1').style.backgroundColor = 'white'; // Revert color of first button
+    document.getElementById('showMe').style.display = 'block'; // Show the "show me" div
+  });
 
     ankenBox.addEventListener('input', function() {
 
@@ -106,4 +129,5 @@ var confirmButton = document.getElementById('confirmButton');
     modalForm.addEventListener('submit', function (event) {
         modalForm.submit();
     });
+
 </script>

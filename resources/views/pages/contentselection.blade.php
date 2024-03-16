@@ -12,7 +12,7 @@
     <title>Document</title>
 
 </head>
-<body class="contentselection">
+<body class="selectionphase">
 <div>
     @include('layout.selection')
 </div>

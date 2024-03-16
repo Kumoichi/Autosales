@@ -1,11 +1,21 @@
 h1{
   text-align: center;  
 }
-.container {
+.summarycontainer {
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: auto;
+    margin-top: 20px;
+
+}
+
+.targetContainer{
+    text-align: center;
+    border: 2px solid gray;
+    width: 500px;
+    padding: 20px;
     height: auto;
 }
 

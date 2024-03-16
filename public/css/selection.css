@@ -65,19 +65,20 @@ h2{
 
 
 
-.targetselection .shape-container + .shape-container .triangle {
+.selectionphase .shape-container + .shape-container .triangle {
     border-left: 60px solid gray;
 }
 
-.targetselection .shape-container + .shape-container .square {
+.selectionphase .shape-container + .shape-container .square {
     background-color: gray;
 }
 
-.contentselection .shape-container + .shape-container + .shape-container .triangle {
+
+.summaryphase .shape-container + .shape-container + .shape-container .triangle {
     border-left: 60px solid gray;
 }
 
-.contentselection .shape-container + .shape-container + .shape-container .square {
+.summaryphase .shape-container + .shape-container + .shape-container .square {
     background-color: gray;
 }
 

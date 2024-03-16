@@ -6,23 +6,37 @@
     <title>Third Page</title>
     <link rel="stylesheet" href="{{ asset('css/summary-page.css') }}"> 
     <link rel="stylesheet" href="{{ asset('css/bottomButton.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/title.css') }}"> 
+
 
 
 </head>
 
-<body class="contentselection">
+<body class="summaryphase">
 <div>
     @include('layout.selection')
 </div>
 
-<h1>Third Page</h1>
 
-<div class="container">
-    <div id="selectedTarget"></div>
-    <div class="template-display">
-        <div id="selectedTemplateContentContainer"></div>
+<div class="white-back">
+    
+    <p class="green-underline">配信内容を確認してください</p>
+    <div class="summarycontainer">
+        <div id="selectedTarget" class="targetContainer"></div>
+        <div class="template-display">
+            <div id="selectedTemplateContentContainer"></div>
+        </div>
     </div>
 </div>
+
+
+<div class="center-container">
+        <div class="button-wrapper">
+            <a href="templateselection" class="pagemovement-button">前のページ</a>
+            <a href="timeselection" id="openModal" class="pagemovement-button">テンプレートを選択</a>
+        </div>
+        <a href="targetselection" class="firstpage-button">最初から設定</a>
+    </div>
 <!-- 
 <div class="center-container">
         <div class="button-wrapper">

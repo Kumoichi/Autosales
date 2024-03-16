@@ -1,74 +1,72 @@
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Another Page</title>
-    <style>
-        ul {
-            list-style-type: none; /* Remove default bullet point */
-        }
-        .circle {
-            margin-right: 10px; /* Adjust margin between circles */
-            text-decoration: none; /* Remove default underline */
-            color: white;          /* Initial color is white */ 
-            cursor: pointer;       /* Show pointer cursor on hover */
-            display: inline-block; /* Allows setting width and height */
-            width: 15px;           /* Example size */
-            height: 15px;          /* Example size */
-            border-radius: 50%;    /* Create the circle shape */
-            border: 2px solid gray; /* Black border */
-            text-align: center;    /* Center the text horizontally */
-            vertical-align: middle; /* Align vertically with the text */
-        }
-        
-        .circle.clicked {
-            background-color: blue; /* Change background color when clicked */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Selection Button</title>
+  <style>
+    body {
+        text-align: center; /* Center align the content */
+    }
 
-        li {
-            vertical-align: middle; /* Align the text vertically with the circle */
-            margin-bottom: 10px; /* Adjust margin between list items */
-        }
-    </style>
+    .button-choice {
+      display: inline-block; /* Align the button group to the left */
+      text-align: left; /* Align the content of the button group to the left */
+    }
+
+    .circle-btn {
+      width: 20px; /* Diameter of the circle */
+      height: 20px; /* Diameter of the circle */
+      border-radius: 50%; /* Makes it a circle */
+      background-color: #007bff; /* Button background color */
+      color: white; /* Text color */
+      font-size: 16px; /* Text size */
+      border: none; /* Removes default button border */
+      cursor: pointer; /* Shows pointer cursor on hover */
+      vertical-align: middle; /* Align the button vertically */
+      margin-right: 5px; /* Add spacing between button and text */
+    }
+
+    .circle-btn:hover {
+      background-color: #0056b3; /* Darker background color on hover */
+    }
+
+    .button-group {
+      margin-bottom: 10px; /* Add space between button groups */
+    }
+
+    #showMe{
+        display: none;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Welcome to Another Page</h1>
-    
-    @if(isset($names) && $names->count() > 0)
-        <p>Names:</p>
-        <ul id="targetList">
-            @foreach($names as $name)
-                <li>
-                    <a href="#" class="circle" data-target="{{ $name }}"></a> {{ $name }}
-                </li>
-            @endforeach
-        </ul>
-    @else
-        <p>No names found</p>
-    @endif
 
-  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('.circle').click(function() {
-            $(this).toggleClass('clicked');
-            
-            var targetName = $(this).data('target');
-            
-            // Reset sessionStorage
-            sessionStorage.removeItem('selectedTargets');
-            
-            // Toggle selected target in session storage
-            var selectedTargets = [];
-            selectedTargets.push(targetName);
-            sessionStorage.setItem('selectedTargets', JSON.stringify(selectedTargets));
-        });
-    });
+<div class="button-choice">
+  <div class="button-group">
+    <button class="circle-btn" id="circleBtn1"></button><span class="text">first button</span>
+  </div>
+
+  <div class="button-group">
+    <button class="circle-btn" id="circleBtn2"></button><span class="text">second button</span>
+  </div>
+</div>
+
+<div id="showMe"> @include('calendar_form')</div>
+
+<script>
+  document.getElementById('circleBtn1').addEventListener('click', function() {
+    this.style.backgroundColor = 'red';
+    document.getElementById('circleBtn2').style.backgroundColor = '#007bff'; // Revert color of second button
+    document.getElementById('showMe').style.display = 'none'; // Hide the "show me" div
+  });
+
+  document.getElementById('circleBtn2').addEventListener('click', function() {
+    this.style.backgroundColor = 'red';
+    document.getElementById('circleBtn1').style.backgroundColor = '#007bff'; // Revert color of first button
+    document.getElementById('showMe').style.display = 'block'; // Show the "show me" div
+  });
 </script>
-
 </body>
 </html> -->
 
@@ -77,36 +75,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scrollable List</title>
+<title>Toggle Circle Button</title>
 <style>
-    .list-container {
-        max-height: 200px;
-        overflow-y: auto;
-        border: 1px solid #ccc;
-        padding: 5px;
-    }
+.outer-circle {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
 
-    .list-item {
-        padding: 10px;
-        border-bottom: 1px solid #eee;
-    }
+.inner-circle {
+  width: 60px;
+  height: 60px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
 </style>
 </head>
 <body>
 
-<div class="list-container">
-    <div class="list-item">Item 1</div>
-    <div class="list-item">Item 2</div>
-    <div class="list-item">Item 3</div>
-    <div class="list-item">Item 4</div>
-    <div class="list-item">Item 5</div>
-    <div class="list-item">Item 6</div>
-    <div class="list-item">Item 7</div>
-    <div class="list-item">Item 8</div>
-    <div class="list-item">Item 9</div>
-    <div class="list-item">Item 10</div>
-    <!-- Add more items as needed -->
+<div class="outer-circle" id="outerCircle" onclick="toggleInnerCircle()">
+  <div class="inner-circle" id="innerCircle"></div>
 </div>
+
+<script>
+function toggleInnerCircle() {
+  var innerCircle = document.getElementById("innerCircle");
+  innerCircle.style.display = (innerCircle.style.display === "none") ? "block" : "none";
+}
+</script>
 
 </body>
 </html>

@@ -8,7 +8,7 @@
 
     <title>Document</title>
 </head>
-<body class="targetselection">
+<body class="selectionphase">
     <div>
         @include('layout.selection')
     </div>

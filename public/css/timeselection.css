@@ -93,3 +93,40 @@
     border: #11A7B7;
     border-radius: 10px;
 }
+
+
+.button-choice {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.text {
+    margin-left: 10px; 
+}
+
+.circle-btn {
+    width: 20px; 
+    height: 20px; 
+    border-radius: 50%; 
+    background-color: white; 
+    color: white; 
+    font-size: 16px;
+    border: none; 
+    cursor: pointer; 
+    border: solid black 1px;
+}
+
+
+
+
+  #showMe{
+      display: none;
+  }
