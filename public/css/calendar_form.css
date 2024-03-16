@@ -1,15 +1,21 @@
 .centralize {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-   
+    flex-direction: column;
+    align-items: center;
+}
+
+.centralize form {
+    display: flex;
+    flex-direction: row; /* Change flex-direction to row */
+    justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap to the next row if needed */
 }
 
 .centralize form div {
     margin-top: 20px;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-right: 10px; /* Add margin-right to create space between elements */
 }
 
 .centralize form div i {
@@ -23,4 +29,3 @@
     height: 25px;
     margin-right: 15px; /* Adjust margin-right as needed */
 }
-

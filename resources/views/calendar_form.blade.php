@@ -20,19 +20,8 @@
         <input type="text" id="selected_time" name="selected_time" class="styled-input">
     </div>
 
-    <div style="margin-top: 20px;">
-        <span class="material-symbols-outlined" style="margin-right: 16px; font-size: 34px; color: gray;">tactic</span>            
-        <select name="selected_frequency" id="selected_frequency" class="styled-input" style="height: 30px; width: 167px;">
-            <option value="spot_delivery">スポット配信</option>
-            <option value="定期配信 - ３日ごと">定期配信 - ３日ごと</option>
-            <option value="定期配信 - 毎週">定期配信 - 毎週</option>
-            <option value="定期配信 - 隔週">定期配信 - 隔週</option>
-            <option value="定期配信 - 毎月">定期配信 - 毎月</option>
-        </select>
-    </div>
-
-
-    <button type="submit">Submit</button>
+<!-- 
+    <button type="submit">Submit</button> -->
 </form>
 
 </div>
