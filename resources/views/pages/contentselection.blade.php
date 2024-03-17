@@ -35,6 +35,7 @@
         </div>
 </div>
 
+
 <div class="center-container">
         <div class="button-wrapper">
             <a href="targetselection" class="pagemovement-button">前のページ</a>

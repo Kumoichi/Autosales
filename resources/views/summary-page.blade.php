@@ -18,6 +18,8 @@
 </div>
 
 
+
+
 <div class="white-back">
     
     <p class="green-underline">配信内容を確認してください</p>

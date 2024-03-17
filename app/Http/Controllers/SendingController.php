@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
 
+
 class SendingController extends Controller
 {
     public function targetselection()
@@ -56,12 +57,34 @@ public function showSummaryPage()
 
     // Retrieve the selected targets from the session
     $selectedTargets = Session::get('selectedTargets', []);    // dd($selectedTargets);
-    // dd(session()->all());
 
     return view('summary-page', [
         'selectedTemplateContent' => $selectedTemplateContent,
         'selectedTargets' => $selectedTargets
     ]);
+}
+
+
+// Method to handle form submission from the target selection page
+public function handleContentSelection(Request $request)
+{
+    $targetName = $request->input('targetName');
+
+    // Fetch location data based on the targetName
+    $locationData = $this->fetchLocationData($targetName);
+
+    return view('summary-page', ['targetName' => $targetName, 'locationData' => $locationData]);
+}
+
+private function fetchLocationData($targetName)
+{
+    $target = Target::where('name', $targetName)->first();
+
+    if ($target) {
+        return $target->location;
+    } else {
+        return null;
+    }
 }
 
     

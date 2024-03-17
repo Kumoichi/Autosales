@@ -30,14 +30,44 @@
             @endif
         </div>
 
+        <form id="targetForm" action="contentselection" method="post">
+            @csrf 
+            <input type="hidden" name="targetName" id="targetNameInput">
+        </form>
+
         <div class="center-container">
             <a href="dashboard" class="pagemovement-button">前へもどる</a>
-            <a href="contentselection" class="pagemovement-button">コンテンツを選択</a>
+            <!-- Submit the form when the button is clicked -->
+            <a href="#" onclick="submitForm();" class="pagemovement-button">コンテンツを選択</a>
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script>
+    <script>
+        function submitForm() {
+            var targetName = document.querySelector('.circle.active').nextSibling.textContent.trim();
+            document.getElementById('targetNameInput').value = targetName;
+            document.getElementById('targetForm').submit();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var circles = document.querySelectorAll('.circle');
+            circles.forEach(function (circle) {
+                circle.addEventListener('click', function (event) {
+                    circles.forEach(function (c) {
+                        c.classList.remove('active');
+                    });
+                    // Add active class to the clicked circle
+                    event.target.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+<!-- <script>
         $(document).ready(function() {
             // Initialize selectedTargets array from sessionStorage
             var selectedTargets = JSON.parse(sessionStorage.getItem('selectedTargets')) || [];
@@ -56,31 +86,3 @@
             });
         });
     </script> -->
-    <script>
-    $(document).ready(function() {
-        // Initialize selected target from sessionStorage
-        var selectedTarget = sessionStorage.getItem('selectedTarget');
-
-        $('.circle').click(function() {
-            var targetName = $(this).data('target');
-            
-            // If the clicked target is already selected, do nothing
-            if (selectedTarget === targetName) {
-                return;
-            }
-
-            // Remove 'clicked' class from previously selected target if exists
-            $('.circle').removeClass('clicked');
-            
-            // Add 'clicked' class to the clicked target
-            $(this).addClass('clicked');
-
-            // Update selected target in sessionStorage
-            selectedTarget = targetName;
-            sessionStorage.setItem('selectedTarget', selectedTarget);
-        });
-    });
-</script>
-
-</body>
-</html>
