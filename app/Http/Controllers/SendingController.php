@@ -65,27 +65,31 @@ public function showSummaryPage()
 }
 
 
-// Method to handle form submission from the target selection page
 public function handleContentSelection(Request $request)
 {
     $targetName = $request->input('targetName');
 
-    // Fetch location data based on the targetName
-    $locationData = $this->fetchLocationData($targetName);
+    try {
+        $target = Target::where('name', $targetName)->first();
 
-    return view('summary-page', ['targetName' => $targetName, 'locationData' => $locationData]);
-}
+        if ($target) {
+            $locationData = $target->location;
 
-private function fetchLocationData($targetName)
-{
-    $target = Target::where('name', $targetName)->first();
-
-    if ($target) {
-        return $target->location;
-    } else {
-        return null;
+            if (is_string($locationData)) {
+                return view('summary-page', ['targetName' => $targetName, 'locationData' => $locationData]);
+            } else {
+            
+                return redirect()->back()->with('error', 'Invalid location data');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Target not found');
+        }
+    } catch (\Exception $e) {
+        
+        return redirect()->back()->with('error', 'An error occurred');
     }
 }
+
 
     
 }

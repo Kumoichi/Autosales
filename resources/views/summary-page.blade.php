@@ -18,6 +18,15 @@
 </div>
 
 
+<p>Selected Target: {{ $targetName }}</p>
+@if ($locationData)
+    <p>Location Data: {{ $locationData }}</p>
+@else
+    <p>No location data found for {{ $targetName }}</p>
+@endif
+
+
+
 
 
 <div class="white-back">

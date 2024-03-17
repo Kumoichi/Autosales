@@ -30,7 +30,7 @@
             @endif
         </div>
 
-        <form id="targetForm" action="contentselection" method="post">
+        <form id="targetForm" action="summary-page" method="post">
             @csrf 
             <input type="hidden" name="targetName" id="targetNameInput">
         </form>

@@ -37,14 +37,14 @@ Route::get('/listselection',[ListSelectionController::class, 'listselection']);
 Route::get('/targetselection',[SendingController::class, 'targetselection']);
 
 Route::get('/contentselection',[SendingController::class, 'contentselection']);
-Route::post('/contentselection', [SendingController::class, 'handleContentSelection'])->name('contentselection');
+Route::post('/summary-page', [SendingController::class, 'handleContentSelection'])->name('summary-page');
 
 Route::get('/templateselection',[SendingController::class, 'templateselection']);
 
 Route::get('/timeselection',[SendingController::class, 'timeselection']);
 Route::get('/get-target-name', [SendingController::class, 'targetName'])->name('get-target-name');
 Route::get('/another-page', [SendingController::class, 'anotherPage'])->name('another-page');
-Route::get('/summary-page', [SendingController::class, 'showSummaryPage'])->name('summary-page');
+// Route::get('/summary-page', [SendingController::class, 'showSummaryPage'])->name('summary-page');
 
 
 Route::get('/select-date', [SelectedDateController::class, 'showForm'])->name('show.date.form');
