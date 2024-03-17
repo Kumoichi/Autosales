@@ -1,74 +1,72 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Circle Selection Button</title>
-  <style>
-    body {
-        text-align: center; /* Center align the content */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/targetselection.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/title.css') }}"> 
 
-    .button-choice {
-      display: inline-block; /* Align the button group to the left */
-      text-align: left; /* Align the content of the button group to the left */
-    }
-
-    .circle-btn {
-      width: 20px; /* Diameter of the circle */
-      height: 20px; /* Diameter of the circle */
-      border-radius: 50%; /* Makes it a circle */
-      background-color: #007bff; /* Button background color */
-      color: white; /* Text color */
-      font-size: 16px; /* Text size */
-      border: none; /* Removes default button border */
-      cursor: pointer; /* Shows pointer cursor on hover */
-      vertical-align: middle; /* Align the button vertically */
-      margin-right: 5px; /* Add spacing between button and text */
-    }
-
-    .circle-btn:hover {
-      background-color: #0056b3; /* Darker background color on hover */
-    }
-
-    .button-group {
-      margin-bottom: 10px; /* Add space between button groups */
-    }
-
-    #showMe{
-        display: none;
-    }
-  </style>
+    <title>Document</title>
 </head>
-<body>
+<body class="selectionphase">
+    <div>
+        @include('layout.selection')
+    </div>
 
-<div class="button-choice">
-  <div class="button-group">
-    <button class="circle-btn" id="circleBtn1"></button><span class="text">first button</span>
-  </div>
-
-  <div class="button-group">
-    <button class="circle-btn" id="circleBtn2"></button><span class="text">second button</span>
-  </div>
+    <div class="white-back">
+        <p class="green-underline"><span style="color: red;">＊</span>ターゲットを選択する</p>
+<!-- here getting targetname from controller, and then printing that data everytime-->
+<!-- $name value is passed as data-target -->
+<div class="centered-container">
+  @if(isset($names) && $names->count() > 0)
+    <ul id="targetList">
+      @foreach($names as $name)
+        <li>
+          <a href="#" class="circle" data-target="{{ $name }}"></a> {{ $name }}
+        </li>
+      @endforeach
+    </ul>
 </div>
 
-<div id="showMe"> @include('calendar_form')</div>
+        <!-- Form to submit the selected target name -->
+        <form id="targetForm" action="{{ route('handle.target.selection') }}" method="post">
+            @csrf <!-- CSRF token for security -->
+            <input type="hidden" name="targetName" id="targetNameInput">
+        </form>
 
-<script>
-  document.getElementById('circleBtn1').addEventListener('click', function() {
-    this.style.backgroundColor = 'red';
-    document.getElementById('circleBtn2').style.backgroundColor = '#007bff'; // Revert color of second button
-    document.getElementById('showMe').style.display = 'none'; // Hide the "show me" div
-  });
+        <div class="center-container">
+            <a href="dashboard" class="pagemovement-button">前へもどる</a>
+            <!-- Submit the form when the button is clicked -->
+          <a href="#" onclick="submitForm();" class="pagemovement-button">コンテンツを選択</div>
+    </div>
 
-  document.getElementById('circleBtn2').addEventListener('click', function() {
-    this.style.backgroundColor = 'red';
-    document.getElementById('circleBtn1').style.backgroundColor = '#007bff'; // Revert color of first button
-    document.getElementById('showMe').style.display = 'block'; // Show the "show me" div
-  });
-</script>
+    <script>
+        // make submitForm function, targetName 
+        function submitForm() {
+          var targetName = document.querySelector('.circle.active').nextSibling.textContent.trim();
+          document.getElementById('targetNameInput').value = targetName;
+          document.getElementById('targetForm').submit();
+        }
+
+        //circles are loaded and parsed
+        document.addEventListener('DOMContentLoaded', function () {
+            // This line of JavaScript code selects all HTML elements with the class
+            //  circle and stores them in the circles variable
+            var circles = document.querySelectorAll('.circle');
+            circles.forEach(function (circle) {
+                circle.addEventListener('click', function (event) {
+                    circles.forEach(function (c) {
+                        c.classList.remove('active');
+                    });
+                    // Add active class to the clicked circle
+                    event.target.classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
-</html> -->
+</html>
+<!-- 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -113,4 +111,4 @@ function toggleInnerCircle() {
 </script>
 
 </body>
-</html>
+</html> -->

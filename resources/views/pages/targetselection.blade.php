@@ -57,7 +57,6 @@
                     circles.forEach(function (c) {
                         c.classList.remove('active');
                     });
-                    // Add active class to the clicked circle
                     event.target.classList.add('active');
                 });
             });
