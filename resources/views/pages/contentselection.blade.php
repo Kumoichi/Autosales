@@ -7,19 +7,14 @@
     <link rel="stylesheet" href="{{ asset('css/contents.css') }}"> 
     <link rel="stylesheet" href="{{ asset('css/bottomButton.css') }}"> 
 
-
-
     <title>Document</title>
-
 </head>
 <body class="selectionphase">
-<div>
-    @include('layout.selection')
-</div>
+    <div>
+        @include('layout.selection')
+    </div>
 
-
-
-<div class="white-back">
+    <div class="white-back">
         <p class="green-underline">コンテンツを選択する</p>
         <a href="templateselection" class="skip-button">コンテンツを選択せず、テンプレート選択へ進む</a>
 
@@ -33,16 +28,15 @@
                 <div>six</div>
             </div>
         </div>
-</div>
+    </div>
 
-
-<div class="center-container">
+    <div class="center-container">
         <div class="button-wrapper">
             <a href="targetselection" class="pagemovement-button">前のページ</a>
-            <a href="templateselection" id="openModal" class="pagemovement-button">テンプレートを選択</a>
+            <!-- Updated anchor tag to point to the summary page route -->
+            <a href="{{ route('summary-page', ['targetName' => $targetName]) }}" class="pagemovement-button">Summary Page</a>
         </div>
         <a href="targetselection" class="firstpage-button">最初から設定</a>
     </div>
-
 </body>
 </html>

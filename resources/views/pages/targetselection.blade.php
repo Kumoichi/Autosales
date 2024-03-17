@@ -30,8 +30,9 @@
             @endif
         </div>
 
-        <form id="targetForm" action="summary-page" method="post">
-            @csrf 
+        <!-- Form to submit the selected target name -->
+        <form id="targetForm" action="{{ route('handle.target.selection') }}" method="post">
+            @csrf <!-- CSRF token for security -->
             <input type="hidden" name="targetName" id="targetNameInput">
         </form>
 
@@ -64,25 +65,3 @@
     </script>
 </body>
 </html>
-
-
-
-<!-- <script>
-        $(document).ready(function() {
-            // Initialize selectedTargets array from sessionStorage
-            var selectedTargets = JSON.parse(sessionStorage.getItem('selectedTargets')) || [];
-
-            $('.circle').click(function() {
-                $(this).toggleClass('clicked');
-                
-                var targetName = $(this).data('target');
-                
-                // Check if the targetName is already in the selectedTargets array
-                if (selectedTargets.indexOf(targetName) === -1) {
-                    // If not present, push it to the array and update sessionStorage
-                    selectedTargets.push(targetName);
-                    sessionStorage.setItem('selectedTargets', JSON.stringify(selectedTargets));
-                }
-            });
-        });
-    </script> -->

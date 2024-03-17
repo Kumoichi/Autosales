@@ -36,8 +36,18 @@ Route::get('/listselection',[ListSelectionController::class, 'listselection']);
 // SendingController
 Route::get('/targetselection',[SendingController::class, 'targetselection']);
 
-Route::get('/contentselection',[SendingController::class, 'contentselection']);
-Route::post('/summary-page', [SendingController::class, 'handleContentSelection'])->name('summary-page');
+// Route to handle form submission from the target selection page
+Route::post('/handle-target-selection', [SendingController::class, 'handleTargetSelection'])->name('handle.target.selection');
+
+// Route to show the content selection page
+Route::get('/contentselection', [SendingController::class, 'showContentSelectionPage'])->name('contentselection');
+
+// Route to handle form submission from the content selection page
+Route::post('/handle-content-selection', [SendingController::class, 'handleContentSelection'])->name('handle.content.selection');
+
+// Route to show the summary page
+Route::get('/summary-page/{targetName}', [SendingController::class, 'showSummaryPage'])->name('summary-page');
+
 
 Route::get('/templateselection',[SendingController::class, 'templateselection']);
 
@@ -45,6 +55,12 @@ Route::get('/timeselection',[SendingController::class, 'timeselection']);
 Route::get('/get-target-name', [SendingController::class, 'targetName'])->name('get-target-name');
 Route::get('/another-page', [SendingController::class, 'anotherPage'])->name('another-page');
 // Route::get('/summary-page', [SendingController::class, 'showSummaryPage'])->name('summary-page');
+
+
+
+
+
+
 
 
 Route::get('/select-date', [SelectedDateController::class, 'showForm'])->name('show.date.form');
