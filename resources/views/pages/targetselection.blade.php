@@ -30,15 +30,13 @@
             @endif
         </div>
 
-        <!-- Form to submit the selected target name -->
         <form id="targetForm" action="{{ route('handle.target.selection') }}" method="post">
-            @csrf <!-- CSRF token for security -->
+            @csrf 
             <input type="hidden" name="targetName" id="targetNameInput">
         </form>
 
         <div class="center-container">
             <a href="dashboard" class="pagemovement-button">前へもどる</a>
-            <!-- Submit the form when the button is clicked -->
             <a href="#" onclick="submitForm();" class="pagemovement-button">コンテンツを選択</a>
         </div>
     </div>
