@@ -101,27 +101,24 @@
 
 
 <script>
-    //make value1, value2, jigyoukubunsho-input value
-    //check whether they are empty, it empty return false, if not return ture.
-    function validateForm()
-    {
+    function validateForm() {
         var value1 = document.querySelector('input[name="value1"]').value.trim();
         var value2 = document.querySelector('input[name="value2"]').value.trim();
         var selectedValue = document.getElementById('jigyoukubunsho-input').value.trim();
 
-        if(value1 === '' || value2 === '')
-        {
-            alert('Please fill in both establishment year filds.');
+        // Check if any text input is empty
+        if (value1 === '' || value2 === '') {
+            alert('Please fill in both establishment year fields.');
             return false;
         }
 
-        if(selectedValue === '')
-        {
-            alert('please select a data value');
+        // Check if at least one circle is selected
+        if (selectedValue === '') {
+            alert('Please select a data value.');
             return false;
         }
 
-        return true;
+        return true; // Form is valid
     }
 
     function showInnerCircle(circleNumber) {

@@ -35,9 +35,9 @@
             <div class="inner-box">
                 <div class="nested-div-description">資本金（千円）：</div>
                 <div class="horizontal-box">
-                    <!-- <input type="text" name="value1" placeholder="￥" class="inner-box hori" style="padding-left: 8px;"> -->
+                    <input type="text" name="value3" placeholder="￥" class="inner-box hori" style="padding-left: 8px;">
                     <span class="divider">~</span>
-                    <!-- <input type="text" name="value2" placeholder="￥" class="inner-box hori" style="padding-left: 8px;"> -->
+                    <input type="text" name="value4" placeholder="￥" class="inner-box hori" style="padding-left: 8px;">
                 </div>
 
                 <div class="underline"></div>
@@ -47,9 +47,9 @@
             <div class="inner-box">
                 <div class="nested-div-description">設立年：</div>
                 <div class="horizontal-box">
-                    <input type="text" name="value1" placeholder="設立年" class="inner-box hori" style="padding-left: 8px;">
+                    <input type="text" name="value5" placeholder="設立年" class="inner-box hori" style="padding-left: 8px;">
                     <span class="divider">~</span>
-                    <input type="text" name="value2" placeholder="設立年" class="inner-box hori" style="padding-left: 8px;">
+                    <input type="text" name="value6" placeholder="設立年" class="inner-box hori" style="padding-left: 8px;">
                 </div>
             </div>
         </div>
@@ -65,9 +65,9 @@
 
             
             <!-- 事業所区分 -->
-            <div class="inner-box">                
+            <div class="inner-box">     
+            <div class="nested-div-description">事業所区分：</div>
                 <div class="three-circle-selection-container">
-
                     <div class="circle-selection-container">
                         <div class="outer-circle" onclick="showInnerCircle(1)">
                             <div class="inner-circle" id="inner-circle-1"></div>
@@ -100,13 +100,16 @@
                 <div class="underline"></div>  
             </div>
 
+
+            
+
             <!-- 従業員数 -->
             <div class="inner-box">
                 <div class="nested-div-description">従業員数（人）：</div>
                 <div class="horizontal-box">
-                    <!-- <input type="text" name="value1" placeholder="設立年" class="inner-box hori" style="padding-left: 8px;"> -->
+                    <input type="text" name="value10" placeholder="従業員" class="inner-box hori" style="padding-left: 8px;">
                     <span class="divider">~</span>
-                    <!-- <input type="text" name="value2" placeholder="設立年" class="inner-box hori" style="padding-left: 8px;"> -->
+                    <input type="text" name="value11" placeholder="従業員" class="inner-box hori" style="padding-left: 8px;">
                 </div>
                 <div class="underline"></div>        
             </div>
@@ -116,15 +119,15 @@
             <div class="inner-box">
                 <div class="nested-div-description">売上高（百万円）：</div>
                 <div class="horizontal-box">
-                    <!-- <input type="text" name="value1" placeholder="設立年" class="inner-box hori" style="padding-left: 8px;"> -->
+                    <input type="text" name="value12" placeholder="売上高" class="inner-box hori" style="padding-left: 8px;">
                     <span class="divider">~</span>
-                    <!-- <input type="text" name="value2" placeholder="設立年" class="inner-box hori" style="padding-left: 8px;"> -->
+                    <input type="text" name="value13" placeholder="売上高" class="inner-box hori" style="padding-left: 8px;">
                 </div>
                 <div class="underline"></div>        
             </div>
         </div>
         
-        <input id="jigyoukubunsho-input" type="hidden" name="data">
+        <input id="value8" type="hidden" name="value8">
         <button type="submit" id="submit-btn">Submit</button>
     </form>
                             
@@ -132,6 +135,47 @@
 </html>
 
 <script>
+function validateForm() {
+    var value3 = document.querySelector('input[name="value3"]').value.trim();
+    var value4 = document.querySelector('input[name="value4"]').value.trim();
+    var value5 = document.querySelector('input[name="value5"]').value.trim();
+    var value6 = document.querySelector('input[name="value6"]').value.trim();
+    var value8 = document.getElementById('value8').value.trim();
+    var value10 = document.querySelector('input[name="value10"]').value.trim();
+    var value11 = document.querySelector('input[name="value11"]').value.trim();
+    var value12 = document.querySelector('input[name="value12"]').value.trim();
+    var value13 = document.querySelector('input[name="value13"]').value.trim();
+
+    if (value3 === '' || value4 === '') {
+        alert('資本金を入力してください');
+        return false;
+    }
+
+    if (value5 === '' || value6 === '') {
+        alert('設立年を入力してください');
+        return false;
+    }
+
+    if (value8 === '') {
+        alert('事業所区分を選択してください');
+        return false;
+    }
+
+    if (value10 === '' || value11 === '') {
+        alert('従業員数を入力してください');
+        return false;
+    }
+
+    if (value12 === '' || value13 === '') {
+        alert('売上高を入力してください');
+        return false;
+    }
+
+    return true;
+}
+
+
+
     function showInnerCircle(circleNumber) {
         var innerCircle = document.getElementById("inner-circle-" + circleNumber);
         var outerCircle = innerCircle.parentElement;
@@ -151,11 +195,13 @@
         // Show inner circle and set border color for the selected circle
         innerCircle.style.display = "block";
         outerCircle.style.borderColor = "red";
-        document.getElementById('jigyoukubunsho-input').value = selectedValue;
+        document.getElementById('value8').value = selectedValue;
     }
 
     document.getElementById('submit-btn').addEventListener('click',function(event){
         event.preventDefault(); 
+        if (validateForm()) {
         document.getElementById('data-form').submit();
+        }
     });
 </script>
