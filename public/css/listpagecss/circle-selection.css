@@ -1,4 +1,4 @@
-.outer-circle {
+.jigyo-outer-circle, .jojo-outer-circle {
     border: solid 1px black;
     width: 18px;
     height: 18px;
@@ -8,7 +8,7 @@
     cursor: pointer;
     position: relative;
 }
-.inner-circle {
+.jigyo-inner-circle, .jojo-inner-circle {
     display: none;
     width: 15px;
     height: 15px;
@@ -40,3 +40,4 @@
 .circle-selection-content{
     margin-left: 2px;
 }
+

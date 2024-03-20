@@ -19,11 +19,13 @@ public function handleListSelection(Request $request)
         'value5' => 'required',
         'value6' => 'required',
         'value8' => 'required',
+        'value9' => 'required',
         'value10' => 'required',
         'value11' => 'required',
         'value12' => 'required',
         'value13' => 'required',
     ]);
+
 
     $items = [
         ['item_id' => 3, 'input_name' => 'value3'],
@@ -31,6 +33,7 @@ public function handleListSelection(Request $request)
         ['item_id' => 5, 'input_name' => 'value5'],
         ['item_id' => 6, 'input_name' => 'value6'],
         ['item_id' => 8, 'input_name' => 'value8'],
+        ['item_id' => 9, 'input_name' => 'value9'],
         ['item_id' => 10, 'input_name' => 'value10'],
         ['item_id' => 11, 'input_name' => 'value11'],
         ['item_id' => 12, 'input_name' => 'value12'],
@@ -60,7 +63,6 @@ public function handleTestSelection(Request $request)
         dd($data);
         
 
-        // Use dd() to dump and die, showing the data received
         Selection::create([
             'item_id' => 7,
             'selected_number' => $request->input('data'),

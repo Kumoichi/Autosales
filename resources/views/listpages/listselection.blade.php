@@ -69,39 +69,72 @@
             <div class="nested-div-description">事業所区分：</div>
                 <div class="three-circle-selection-container">
                     <div class="circle-selection-container">
-                        <div class="outer-circle" onclick="showInnerCircle(1)">
-                            <div class="inner-circle" id="inner-circle-1"></div>
+                        <div class="jigyo-outer-circle" onclick="jigyoShowInnerCircle(1)">
+                            <div class="jigyo-inner-circle" id="jigyo-inner-circle-1"></div>
                         </div>
 
                         <div class="circle-selection-content">本社</div>
-                        <div id="selected-data-1" style="display:none">1</div>
+                        <div id="jigyo-selected-data-1" style="display:none">1</div>
                     </div>
 
                     <div class="circle-selection-container">
-                        <div class="outer-circle" onclick="showInnerCircle(2)">
-                            <div class="inner-circle" id="inner-circle-2"></div>
+                        <div class="jigyo-outer-circle" onclick="jigyoShowInnerCircle(2)">
+                            <div class="jigyo-inner-circle" id="jigyo-inner-circle-2"></div>
                         </div>
 
                         <div class="circle-selection-content">その他・未分類</div>
-                        <div id="selected-data-2" style="display:none">2</div>
+                        <div id="jigyo-selected-data-2" style="display:none">2</div>
                     </div>
 
                     <div class="circle-selection-container">
-                        <div class="outer-circle" onclick="showInnerCircle(3)">
-                            <div class="inner-circle" id="inner-circle-3"></div>
+                        <div class="jigyo-outer-circle" onclick="jigyoShowInnerCircle(3)">
+                            <div class="jigyo-inner-circle" id="jigyo-inner-circle-3"></div>
                         </div>
 
                         <div class="circle-selection-content">すべて</div>
-                        <div id="selected-data-3" style="display:none">3</div>
-
-                        
+                        <div id="jigyo-selected-data-3" style="display:none">3</div>
                     </div>
+                    <input id="value8" type="hidden" name="value8">
                 </div>
                 <div class="underline"></div>  
             </div>
 
 
-            
+            <div class="inner-box">
+            <div class="nested-div-description">上場区分：</div>
+                <div class="three-circle-selection-container">
+                    <div class="circle-selection-container">
+                        <div class="jojo-outer-circle" onclick="jojoShowInnerCircle(4)">
+                            <div class="jojo-inner-circle" id="jojo-inner-circle-4"></div>
+                        </div>
+
+                        <div class="circle-selection-content">上場</div>
+                        <div id="jojo-selected-data-4" style="display:none">1</div>
+                    </div>
+
+                    <div class="circle-selection-container">
+                        <div class="jojo-outer-circle" onclick="jojoShowInnerCircle(5)">
+                            <div class="jojo-inner-circle" id="jojo-inner-circle-5"></div>
+                        </div>
+
+                        <div class="circle-selection-content">非上場</div>
+                        <div id="jojo-selected-data-5" style="display:none">2</div>
+                    </div>
+
+                    <div class="circle-selection-container">
+                        <div class="jojo-outer-circle" onclick="jojoShowInnerCircle(6)">
+                            <div class="jojo-inner-circle" id="jojo-inner-circle-6"></div>
+                        </div>
+
+                        <div class="circle-selection-content">すべて</div>
+                        <div id="jojo-selected-data-6" style="display:none">3</div>
+                    </div>
+                </div>
+                <input id="value9" type="hidden" name="value9">
+
+                <div class="underline"></div>  
+            </div>
+
 
             <!-- 従業員数 -->
             <div class="inner-box">
@@ -123,13 +156,14 @@
                     <span class="divider">~</span>
                     <input type="text" name="value13" placeholder="売上高" class="inner-box hori" style="padding-left: 8px;">
                 </div>
-                <div class="underline"></div>        
+                       
             </div>
         </div>
         
-        <input id="value8" type="hidden" name="value8">
-        <button type="submit" id="submit-btn">Submit</button>
     </form>
+    <div class="submit-container">
+        <button class="submit-button" type="submit" id="submit-btn">この条件で選択</button>   
+    </div>
                             
 </body>
 </html>
@@ -141,6 +175,7 @@ function validateForm() {
     var value5 = document.querySelector('input[name="value5"]').value.trim();
     var value6 = document.querySelector('input[name="value6"]').value.trim();
     var value8 = document.getElementById('value8').value.trim();
+    var value9 = document.getElementById('value9').value.trim();
     var value10 = document.querySelector('input[name="value10"]').value.trim();
     var value11 = document.querySelector('input[name="value11"]').value.trim();
     var value12 = document.querySelector('input[name="value12"]').value.trim();
@@ -161,6 +196,11 @@ function validateForm() {
         return false;
     }
 
+    if (value9 === '') {
+        alert('上場区分を選択してください');
+        return false;
+    }
+
     if (value10 === '' || value11 === '') {
         alert('従業員数を入力してください');
         return false;
@@ -176,15 +216,15 @@ function validateForm() {
 
 
 
-    function showInnerCircle(circleNumber) {
-        var innerCircle = document.getElementById("inner-circle-" + circleNumber);
+    function jigyoShowInnerCircle(circleNumber) {
+        var innerCircle = document.getElementById("jigyo-inner-circle-" + circleNumber);
         var outerCircle = innerCircle.parentElement;
-        var selectedValue = document.getElementById("selected-data-" + circleNumber).innerText.trim();
+        var selectedValue = document.getElementById("jigyo-selected-data-" + circleNumber).innerText.trim();
 
         
         // Hide all inner circles and reset border colors
-        var allInnerCircles = document.querySelectorAll('.inner-circle');
-        var allOuterCircles = document.querySelectorAll('.outer-circle');
+        var allInnerCircles = document.querySelectorAll('.jigyo-inner-circle');
+        var allOuterCircles = document.querySelectorAll('.jigyo-outer-circle');
         allInnerCircles.forEach(function(circle) {
             circle.style.display = "none";
         });
@@ -197,6 +237,30 @@ function validateForm() {
         outerCircle.style.borderColor = "red";
         document.getElementById('value8').value = selectedValue;
     }
+
+    function jojoShowInnerCircle(circleNumber) {
+        var innerCircle = document.getElementById("jojo-inner-circle-" + circleNumber);
+        var outerCircle = innerCircle.parentElement;
+        var selectedValue = document.getElementById("jojo-selected-data-" + circleNumber).innerText.trim();
+
+        
+        // Hide all inner circles and reset border colors
+        var allInnerCircles = document.querySelectorAll('.jojo-inner-circle');
+        var allOuterCircles = document.querySelectorAll('.jojo-outer-circle');
+        allInnerCircles.forEach(function(circle) {
+            circle.style.display = "none";
+        });
+        allOuterCircles.forEach(function(circle) {
+            circle.style.borderColor = "black";
+        });
+
+        // Show inner circle and set border color for the selected circle
+        innerCircle.style.display = "block";
+        outerCircle.style.borderColor = "red";
+        document.getElementById('value9').value = selectedValue;
+    }
+
+
 
     document.getElementById('submit-btn').addEventListener('click',function(event){
         event.preventDefault(); 
