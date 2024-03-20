@@ -13,11 +13,16 @@ class ListSelectionController extends Controller
 
 public function handleListSelection(Request $request)
 {
-    // Validate the form data
     $validatedData = $request->validate([
         'value1' => 'required',
         'value2' => 'required',
+        'data' => 'required',
     ]);
+    // $value1= $request->input('value1');
+    // dd($value1);
+
+    // $data = $request->input('data');
+    // dd($data);
 
     // Create and save a new Selection instance for the first input
     Selection::create([
@@ -25,14 +30,39 @@ public function handleListSelection(Request $request)
         'selected_number' => $request->input('value1'),
     ]);
 
-    // Create and save a new Selection instance for the second input
     Selection::create([
         'item_id' => 6,
         'selected_number' => $request->input('value2'),
     ]);
 
-    // Redirect back or to a different page after successful submission
+    Selection::create([
+        'item_id' => 7,
+        'selected_number' => $request->input('data'),
+    ]);
+
     return redirect()->back()->with('success', 'Data inserted successfully!');
 }
+
+public function handleTestSelection(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'data' => 'required',
+        ]);
+        
+        // Retrieve the data sent from the form
+        $data = $request->input('data');
+        dd($data);
+        
+
+        // Use dd() to dump and die, showing the data received
+        Selection::create([
+            'item_id' => 7,
+            'selected_number' => $request->input('data'),
+        ]);
+        // return view ("listpages.listselection");
+        return redirect()->back()->with('success', 'Data inserted successfully!');
+
+    }
 
 }

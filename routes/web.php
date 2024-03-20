@@ -44,6 +44,7 @@ Route::get('/select-date', [SelectedDateController::class, 'showForm'])->name('s
 Route::post('/save-date', [SelectedDateController::class, 'saveDateAndTime'])->name('save.date');
 
 Route::post('/listselection', [ListSelectionController::class, 'handleListSelection'])->name('handle.list.selection');
+Route::post('/handle-test-selection', [ListSelectionController::class, 'handleTestSelection'])->name('handle.test.selection');
 
 
 //practice controllers
