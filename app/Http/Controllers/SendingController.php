@@ -95,6 +95,11 @@ public function anotherPage()
     return view('another-page');
 }
 
+
+public function modalPage()
+{
+    return view('modal-page');
+}
     
 }
 

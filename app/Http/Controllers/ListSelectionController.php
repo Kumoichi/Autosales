@@ -10,7 +10,6 @@ class ListSelectionController extends Controller
         return view ("listpages.listselection");
     }
 
-
 public function handleListSelection(Request $request)
 {
     $validatedData = $request->validate([
@@ -53,7 +52,6 @@ public function handleListSelection(Request $request)
 
 public function handleTestSelection(Request $request)
     {
-
         $validatedData = $request->validate([
             'data' => 'required',
         ]);
@@ -70,6 +68,16 @@ public function handleTestSelection(Request $request)
         // return view ("listpages.listselection");
         return redirect()->back()->with('success', 'Data inserted successfully!');
 
+    }
+
+
+    public function handleModalSelection(Request $request)
+    {
+        $validatedData = $request->validate([
+            'selectedRegion' => 'required',
+        ]);
+        $data = $request->input('selectedRegion');
+        dd($data);
     }
 
 }

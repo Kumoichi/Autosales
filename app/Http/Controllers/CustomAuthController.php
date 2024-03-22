@@ -9,8 +9,6 @@ use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
-
-
 class CustomAuthController extends Controller
 {
     public function login()
@@ -39,31 +37,29 @@ class CustomAuthController extends Controller
         }
     }
     
-
     public function dashboard()
-{
-    $data = null;
-    if(Session::has('loginId')){
-        $data = Admin::find(Session::get('loginId'));   
+    {
+        $data = null;
+        if(Session::has('loginId')){
+            $data = Admin::find(Session::get('loginId'));   
+        }
+        return view('dashboard', compact('data'));
     }
-    return view('dashboard', compact('data'));
-}
 
-public function logout(){
-    if(Session::has('loginId')){
-        Session::forget('loginId'); 
+    public function logout(){
+        if(Session::has('loginId')){
+            Session::forget('loginId'); 
+        }
+        return redirect('login'); // Redirect to the login page
     }
-    return redirect('login'); // Redirect to the login page
-}
 
-public function testingpage() {
-    return view('testingpage');
-}
+    public function testingpage() {
+        return view('testingpage');
+    }
 
 
-public function targetDisplay()
-{
-    return view('designs');
-}
-
+    public function targetDisplay()
+    {
+        return view('designs');
+    }
 }

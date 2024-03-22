@@ -11,12 +11,12 @@
     @include('layout.topbar')
 </head>
 <body>
+<div style="margin-left:21%;">項目で詳細条件を選択してください</div> 
 
     <form class="listselection_container" id="data-form" action="{{ route('handle.list.selection') }}" method="POST">
     @csrf
     <!-- 左側 -->
         <div class="two-box">          
-            <div>項目で詳細条件を選択してください</div> 
             <!-- 地域 -->
             <div class="inner-box">
                 <div class="nested-div-description">地域：</div>
@@ -162,7 +162,7 @@
         
     </form>
     <div class="submit-container">
-        <button class="submit-button" type="submit" id="submit-btn">この条件で選択</button>   
+        <button class="submit-button" type="submit" id="submit-btn">この条件で検索</button>   
     </div>
                             
 </body>
@@ -234,7 +234,7 @@ function validateForm() {
 
         // Show inner circle and set border color for the selected circle
         innerCircle.style.display = "block";
-        outerCircle.style.borderColor = "red";
+        outerCircle.style.borderColor = "#11A7B7";
         document.getElementById('value8').value = selectedValue;
     }
 
@@ -256,11 +256,9 @@ function validateForm() {
 
         // Show inner circle and set border color for the selected circle
         innerCircle.style.display = "block";
-        outerCircle.style.borderColor = "red";
+        outerCircle.style.borderColor = "#11A7B7";
         document.getElementById('value9').value = selectedValue;
     }
-
-
 
     document.getElementById('submit-btn').addEventListener('click',function(event){
         event.preventDefault(); 

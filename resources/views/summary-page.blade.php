@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/summary-page.css') }}"> 
     <link rel="stylesheet" href="{{ asset('css/bottomButton.css') }}"> 
     <link rel="stylesheet" href="{{ asset('css/title.css') }}"> 
-
-
-
 </head>
 
 <body class="summaryphase">
@@ -24,10 +21,6 @@
 @else
     <p>No location data found for {{ $targetName }}</p>
 @endif
-
-
-
-
 
 <div class="white-back">
     

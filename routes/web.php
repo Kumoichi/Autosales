@@ -51,5 +51,10 @@ Route::post('/handle-test-selection', [ListSelectionController::class, 'handleTe
 Route::get('/testingpage', [CustomAuthController::class, 'testingpage']);
 Route::get('/get-target-name', [SendingController::class, 'targetName'])->name('get-target-name');
 Route::get('/another-page', [SendingController::class, 'anotherPage'])->name('another-page');
+
+Route::get('/modal-page', [SendingController::class, 'modalPage'])->name('modal-page');
+Route::post('/handle-modal-selection', [ListSelectionController::class, 'handleModalSelection'])->name('handle.modal.selection');
+
+
 // Route::get('/summary-page', [SendingController::class, 'showSummaryPage'])->name('summary-page');
 
