@@ -99,10 +99,13 @@
     width: 100%;
     position: relative; 
     height: 40px;
-    padding: 10px;
+    padding-left: 10px;
+    padding-top: 12px;
     box-sizing: border-box;
     cursor: pointer;
     background-color: white;
+    overflow: hidden;
+        
 }
 
 .down-arrow {

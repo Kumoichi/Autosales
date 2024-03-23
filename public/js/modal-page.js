@@ -1,41 +1,29 @@
-// 全てがチェックされた場合
+//個々のリピートしているところの省略する方法知っておいたほうがいいから、復習する。
+// 今ある形とgithubにある形を比較してみる。
+
+
+// Function to toggle all checkboxes
 function toggleAllCheckboxes() {
     var selectAllCheckbox = document.getElementById("selectAllCheckbox");
-    var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
-    var aomoriCheckbox = document.getElementById("aomoriCheckbox");
-    var iwateCheckbox = document.getElementById("iwateCheckbox");
+    var checkboxes = document.querySelectorAll(".region-checkbox");
 
-
-    if (selectAllCheckbox.checked) {
-        hokkaidoCheckbox.checked = true;
-        aomoriCheckbox.checked = true;
-        iwateCheckbox.checked = true;
-    } else {
-        hokkaidoCheckbox.checked = false;
-        aomoriCheckbox.checked = false;
-        iwateCheckbox.checked = false;
-    }
-
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
     updateSelectedRegion();
 }
 
-
-//　選択しないが選択された場合
+// Function to deselect all checkboxes
 function deselectAll() {
-    var selectAllCheckbox = document.getElementById("selectAllCheckbox");
-    var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
-    var aomoriCheckbox = document.getElementById("aomoriCheckbox");
-    var iwateCheckbox = document.getElementById("iwateCheckbox");
-    var noneCheckbox = document.getElementById("noneCheckbox");
+    var checkboxes = document.querySelectorAll(".region-checkbox");
 
-    hokkaidoCheckbox.checked = false;
-    aomoriCheckbox.checked = false;
-    iwateCheckbox.checked = false;
-    selectAllCheckbox.checked = false;
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+    });
 
     updateSelectedRegion();
 }
-    
+
     
     function openModal(){
         document.getElementById("myModal").style.display = "block";
@@ -54,28 +42,16 @@ function deselectAll() {
 var selectedRegion = [];
 
 function updateSelectedRegion() {
-    var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
-    var aomoriCheckbox = document.getElementById("aomoriCheckbox");
-    var iwateCheckbox = document.getElementById("iwateCheckbox");
+    var checkboxes = document.querySelectorAll(".region-checkbox");
+    var selectedRegion = [];
 
-    selectedRegion = [];
-
-    if(hokkaidoCheckbox.checked)
-    {
-        selectedRegion.push(hokkaidoCheckbox.value);
-    }
-
-    if(aomoriCheckbox.checked)
-    {
-        selectedRegion.push(aomoriCheckbox.value);
-    }
-    if(iwateCheckbox.checked)
-    {
-        selectedRegion.push(iwateCheckbox.value);
-    }
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            selectedRegion.push(checkbox.value);
+        }
+    });
 
     document.querySelector(".nested-div-choice").innerText = selectedRegion.join(",");
-
     document.getElementById("selectedRegionInput").value = JSON.stringify(selectedRegion);
 }
 
