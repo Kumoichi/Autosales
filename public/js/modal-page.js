@@ -1,29 +1,62 @@
+// 全てがチェックされた場合
+function toggleAllCheckboxes() {
+    var selectAllCheckbox = document.getElementById("selectAllCheckbox");
+    var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
+    var aomoriCheckbox = document.getElementById("aomoriCheckbox");
+    var iwateCheckbox = document.getElementById("iwateCheckbox");
 
-    // Make openModal function
+
+    if (selectAllCheckbox.checked) {
+        hokkaidoCheckbox.checked = true;
+        aomoriCheckbox.checked = true;
+        iwateCheckbox.checked = true;
+    } else {
+        hokkaidoCheckbox.checked = false;
+        aomoriCheckbox.checked = false;
+        iwateCheckbox.checked = false;
+    }
+
+    updateSelectedRegion();
+}
+
+
+//　選択しないが選択された場合
+function deselectAll() {
+    var selectAllCheckbox = document.getElementById("selectAllCheckbox");
+    var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
+    var aomoriCheckbox = document.getElementById("aomoriCheckbox");
+    var iwateCheckbox = document.getElementById("iwateCheckbox");
+    var noneCheckbox = document.getElementById("noneCheckbox");
+
+    hokkaidoCheckbox.checked = false;
+    aomoriCheckbox.checked = false;
+    iwateCheckbox.checked = false;
+    selectAllCheckbox.checked = false;
+
+    updateSelectedRegion();
+}
+    
+    
     function openModal(){
         document.getElementById("myModal").style.display = "block";
     }
 
-    // Make closeModal function
     function closeModal(){
         document.getElementById("myModal").style.display = "none";
     }
 
-    // Make window clickable and disappear the modal window if other place is selected
     window.onclick = function(event) {
         var modal = document.getElementById("myModal");
         if(event.target == modal) {
             modal.style.display = "none";
         }
     }
-// Initialize selectedRegion as an empty array
 var selectedRegion = [];
 
-// Make updateSelectedRegion() to pass the check box value to the nested-div-choice
-// get hokkaido and aomori check box value, make an array, store values there and then submit
 function updateSelectedRegion() {
     var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
     var aomoriCheckbox = document.getElementById("aomoriCheckbox");
+    var iwateCheckbox = document.getElementById("iwateCheckbox");
 
     selectedRegion = [];
 
@@ -31,10 +64,14 @@ function updateSelectedRegion() {
     {
         selectedRegion.push(hokkaidoCheckbox.value);
     }
-    // even if you are not pressing at that time, if the state is check this if statement is executed.
+
     if(aomoriCheckbox.checked)
     {
         selectedRegion.push(aomoriCheckbox.value);
+    }
+    if(iwateCheckbox.checked)
+    {
+        selectedRegion.push(iwateCheckbox.value);
     }
 
     document.querySelector(".nested-div-choice").innerText = selectedRegion.join(",");

@@ -15,17 +15,8 @@
 </head>
 <body>
 <div style="margin-left:21%;">項目で詳細条件を選択してください</div> 
-<div id="myModal" class="modal">
-
-<!-- 都道府県Modal画面 -->
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <input type="checkbox" id="hokkaidoCheckbox" name="region" value="北海道" onclick ="updateSelectedRegion()">
-        <label id="hokkaidoCheckbox">北海道</label><br>
-        <input type="checkbox" id="aomoriCheckbox" name="region" value="青森" onclick ="updateSelectedRegion()">
-        <label id="aomoriCheckbox">青森</label>
-    </div>
-</div>
+    <!-- 都道府県のモーダルウィンドウ -->
+    @include('listpages.prefectures-modal')
 
     <form class="listselection_container" id="data-form" action="{{ route('handle.list.selection') }}" method="POST">
     @csrf

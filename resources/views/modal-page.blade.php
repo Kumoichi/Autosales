@@ -5,7 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- <script src="{{ asset('js/modal-page.js') }}"></script> -->
-    <link href="{{ asset('css/listpagecss/modal-page.css') }}" rel="stylesheet">
+    <style>
+        
+.inner-box {
+    width: 350px; 
+    height: 50px;
+    background-color: white;
+    margin: 10px;
+}
+
+.nested-div-description {
+    margin-bottom: 5px;
+}
+
+.nested-div-choice {
+    border: solid 1px gray;
+    width: 100%;
+    position: relative; 
+    height: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: white;
+}
+
+.down-arrow {
+    position: absolute; 
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+    </style>
    
 </head>
 <body>
@@ -19,15 +87,18 @@
 <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <input type="checkbox" id="hokkaidoCheckbox" name="region" value="北海道" onclick ="updateSelectedRegion()">
-        <label id="hokkaidoCheckbox">北海道</label><br>
-        <input type="checkbox" id="aomoriCheckbox" name="region" value="青森" onclick ="updateSelectedRegion()">
-        <label id="aomoriCheckbox">青森</label>
+        <input type="checkbox" id="selectAllCheckbox" onclick="toggleAllCheckboxes()">全て<br>
+        <input type="checkbox" id="hokkaidoCheckbox" name="region" value="北海道" onclick="updateSelectedRegion()">
+        <label for="hokkaidoCheckbox">北海道</label><br>
+        <input type="checkbox" id="aomoriCheckbox" name="region" value="青森" onclick="updateSelectedRegion()">
+        <label for="aomoriCheckbox">青森</label>
+        <input type="checkbox" id="noneCheckbox" onclick="deselectAll()">選択しない
     </div>
 </div>
 
+
 <!-- make form here -->
-<form id="regionForm" action="{{ route('handle.list.selection') }}" method="POST">
+<form id="regionForm" action="{{ route('handle.modal.selection') }}" method="POST">
     @csrf
     <input type="hidden" id="selectedRegionInput" name="selectedRegion">
 </form>
@@ -35,6 +106,40 @@
 <!-- make submit button here -->
 <button onclick="submitForm()">Submit</button>
 <script>
+
+
+function toggleAllCheckboxes() {
+    var selectAllCheckbox = document.getElementById("selectAllCheckbox");
+    var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
+    var aomoriCheckbox = document.getElementById("aomoriCheckbox");
+
+    if (selectAllCheckbox.checked) {
+        hokkaidoCheckbox.checked = true;
+        aomoriCheckbox.checked = true;
+    } else {
+        hokkaidoCheckbox.checked = false;
+        aomoriCheckbox.checked = false;
+    }
+
+    // Update the selected regions accordingly
+    updateSelectedRegion();
+}
+
+
+function deselectAll() {
+    var selectAllCheckbox = document.getElementById("selectAllCheckbox");
+    var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
+    var aomoriCheckbox = document.getElementById("aomoriCheckbox");
+    var noneCheckbox = document.getElementById("noneCheckbox");
+
+    // Deselect all checkboxes
+    hokkaidoCheckbox.checked = false;
+    aomoriCheckbox.checked = false;
+    selectAllCheckbox.checked = false;
+
+    // Update the selected regions accordingly
+    updateSelectedRegion();
+}
 
     // Make openModal function
     function openModal(){

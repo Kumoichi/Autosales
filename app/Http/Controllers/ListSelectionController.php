@@ -14,10 +14,10 @@ class ListSelectionController extends Controller
     {
         $selectedRegions = $request->input('selectedRegion');
         $selectedRegionArray = json_decode($selectedRegions);
-        $regionMapping = [
-            "北海道" => 1,
-            "青森" => 2,
-        ];
+
+        // getRegionMappingの関数から数字を都道府県ごとにあてはめている。
+        $regionMapping = $this->getRegionMapping();
+
         
         $items = [];
         
@@ -68,6 +68,16 @@ class ListSelectionController extends Controller
         return redirect()->back()->with('success', 'Data inserted successfully!');
 }
 
+
+private function getRegionMapping() {
+    return [
+        "北海道" => 1,
+        "青森県" => 2,
+        "岩手県" => 3,
+        // Add more regions here if needed
+    ];
+}
+
 public function handleTestSelection(Request $request)
     {
         $validatedData = $request->validate([
@@ -91,43 +101,7 @@ public function handleTestSelection(Request $request)
 
     public function handleModalSelection(Request $request)
     {
-        $selectedRegions = $request->input('selectedRegion');
-        $selectedRegionArray = json_decode($selectedRegions);
-    
-        // You don't need to validate the input names, as they are not user input
-    
-        $items = [];
-    
-        foreach ($selectedRegionArray as $input_name) {
-            $items[] = [
-                'item_id' => 1,
-                'input_name' => (int)$input_name,
-            ];
-        }
-    
-        // Additional items to add
-        $additionalItems = [
-            ['item_id' => 3, 'input_name' => 'value3'],
-            ['item_id' => 4, 'input_name' => 'value4'],
-            ['item_id' => 5, 'input_name' => 'value5'],
-            ['item_id' => 6, 'input_name' => 'value6'],
-            ['item_id' => 8, 'input_name' => 'value8'],
-            ['item_id' => 9, 'input_name' => 'value9'],
-            ['item_id' => 10, 'input_name' => 'value10'],
-            ['item_id' => 11, 'input_name' => 'value11'],
-            ['item_id' => 12, 'input_name' => 'value12'],
-            ['item_id' => 13, 'input_name' => 'value13'],
-        ];
-    
-        // Merge the arrays
-        $items = array_merge($items, $additionalItems);
-    
-        foreach ($items as $item) {
-            Selection::create([
-                'item_id' => $item['item_id'],
-                'selected_number' => $item['input_name'],
-            ]);
-        }
-
+        $data = $request->input('selectedRegion');
+        dd($data);
     }
 }
