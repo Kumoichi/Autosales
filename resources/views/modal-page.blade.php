@@ -4,76 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <style>
-        .inner-box {
-            width: 350px; 
-            height: 50px;
-            background-color: white;
-            margin: 10px;
-        }
-
-        .nested-div-description {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .nested-div-choice {
-            border: solid 1px gray;
-            width: 100%;
-            position: relative; 
-            height: 40px;
-            padding: 10px;
-            box-sizing: border-box;
-            cursor: pointer;
-            background-color: white;
-        }
-
-        .down-arrow {
-            position: absolute; 
-            right: 10px; 
-            top: 50%; 
-            transform: translateY(-50%); 
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            box-sizing: border-box;
-            position: relative;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    <!-- <script src="{{ asset('js/modal-page.js') }}"></script> -->
+    <link href="{{ asset('css/listpagecss/modal-page.css') }}" rel="stylesheet">
+   
 </head>
 <body>
 <div class="inner-box">
@@ -94,7 +27,7 @@
 </div>
 
 <!-- make form here -->
-<form id="regionForm" action="{{ route('handle.modal.selection') }}" method="POST">
+<form id="regionForm" action="{{ route('handle.list.selection') }}" method="POST">
     @csrf
     <input type="hidden" id="selectedRegionInput" name="selectedRegion">
 </form>
@@ -125,26 +58,34 @@ var selectedRegion = [];
 
 // Make updateSelectedRegion() to pass the check box value to the nested-div-choice
 // get hokkaido and aomori check box value, make an array, store values there and then submit
+// Make updateSelectedRegion() to pass the checkbox value to the nested-div-choice
 function updateSelectedRegion() {
     var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
     var aomoriCheckbox = document.getElementById("aomoriCheckbox");
 
     selectedRegion = [];
 
-    if(hokkaidoCheckbox.checked)
-    {
-        selectedRegion.push(hokkaidoCheckbox.value);
+    if(hokkaidoCheckbox.checked) {
+        selectedRegion.push(1); // Push 1 for 北海道
     }
-    // even if you are not pressing at that time, if the state is check this if statement is executed.
-    if(aomoriCheckbox.checked)
-    {
-        selectedRegion.push(aomoriCheckbox.value);
+    if(aomoriCheckbox.checked) {
+        selectedRegion.push(2); // Push 2 for 青森
     }
 
-    document.querySelector(".nested-div-choice").innerText = selectedRegion.join(",");
+    // Display the selected regions in the nested-div-choice
+    var selectedRegionsText = [];
+    if (selectedRegion.includes(1)) {
+        selectedRegionsText.push("北海道");
+    }
+    if (selectedRegion.includes(2)) {
+        selectedRegionsText.push("青森");
+    }
+    document.querySelector(".nested-div-choice").innerText = selectedRegionsText.join(",");
 
+    // Store selected regions as integers in the hidden input
     document.getElementById("selectedRegionInput").value = JSON.stringify(selectedRegion);
 }
+
 
 function submitForm()
     {
@@ -154,3 +95,12 @@ function submitForm()
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

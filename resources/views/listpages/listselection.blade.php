@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{{ asset('css/listpagecss/listselection.css') }}" rel="stylesheet">
     <link href="{{ asset('css/listpagecss/circle-selection.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/listpagecss/modal-page.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/modal-page.js') }}"></script>
+
 
     <title>Document</title>
     
@@ -12,17 +15,31 @@
 </head>
 <body>
 <div style="margin-left:21%;">項目で詳細条件を選択してください</div> 
+<div id="myModal" class="modal">
+
+<!-- 都道府県Modal画面 -->
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <input type="checkbox" id="hokkaidoCheckbox" name="region" value="北海道" onclick ="updateSelectedRegion()">
+        <label id="hokkaidoCheckbox">北海道</label><br>
+        <input type="checkbox" id="aomoriCheckbox" name="region" value="青森" onclick ="updateSelectedRegion()">
+        <label id="aomoriCheckbox">青森</label>
+    </div>
+</div>
 
     <form class="listselection_container" id="data-form" action="{{ route('handle.list.selection') }}" method="POST">
     @csrf
     <!-- 左側 -->
         <div class="two-box">          
             <!-- 地域 -->
+            <!-- Modalのjavascriptはmodal-page.jsにある -->
             <div class="inner-box">
                 <div class="nested-div-description">地域：</div>
-                <div class="nested-div-choice">地域を選択してください<div class="down-arrow">&#9660;</div></div>
-                <div class="underline"></div>    
+                <div class="nested-div-choice" onclick="openModal()">地域を選択してください<div class="down-arrow">&#9660;</div></div>
+                <input type="hidden" id="selectedRegionInput" name="selectedRegion">
+                <div class="underline"></div>
             </div>
+
 
             <!-- 法人格 -->
             <div class="inner-box">
@@ -262,8 +279,8 @@ function validateForm() {
 
     document.getElementById('submit-btn').addEventListener('click',function(event){
         event.preventDefault(); 
-        if (validateForm()) {
+        // if (validateForm()) {
         document.getElementById('data-form').submit();
-        }
+        // }
     });
 </script>

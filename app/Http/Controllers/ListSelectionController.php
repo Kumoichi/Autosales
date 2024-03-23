@@ -10,44 +10,62 @@ class ListSelectionController extends Controller
         return view ("listpages.listselection");
     }
 
-public function handleListSelection(Request $request)
-{
-    $validatedData = $request->validate([
-        'value3' => 'required',
-        'value4' => 'required',
-        'value5' => 'required',
-        'value6' => 'required',
-        'value8' => 'required',
-        'value9' => 'required',
-        'value10' => 'required',
-        'value11' => 'required',
-        'value12' => 'required',
-        'value13' => 'required',
-    ]);
+    public function handleListSelection(Request $request)
+    {
+        $selectedRegions = $request->input('selectedRegion');
+        $selectedRegionArray = json_decode($selectedRegions);
+        $regionMapping = [
+            "北海道" => 1,
+            "青森" => 2,
+        ];
+        
+        $items = [];
+        
+        foreach ($selectedRegionArray as $input_name) {
+                $items[] = [
+                    'item_id' => 1,
+                    'input_name' => $regionMapping[$input_name],
+                ];
+        }
 
-
-    $items = [
-        ['item_id' => 3, 'input_name' => 'value3'],
-        ['item_id' => 4, 'input_name' => 'value4'],
-        ['item_id' => 5, 'input_name' => 'value5'],
-        ['item_id' => 6, 'input_name' => 'value6'],
-        ['item_id' => 8, 'input_name' => 'value8'],
-        ['item_id' => 9, 'input_name' => 'value9'],
-        ['item_id' => 10, 'input_name' => 'value10'],
-        ['item_id' => 11, 'input_name' => 'value11'],
-        ['item_id' => 12, 'input_name' => 'value12'],
-        ['item_id' => 13, 'input_name' => 'value13'],
-    ];
-    
-    foreach ($items as $item) {
-        Selection::create([
-            'item_id' => $item['item_id'],
-            'selected_number' => $validatedData[$item['input_name']],
+        $validatedData = $request->validate([
+            'value3' => 'required',
+            'value4' => 'required',
+            'value5' => 'required',
+            'value6' => 'required',
+            'value8' => 'required',
+            'value9' => 'required',
+            'value10' => 'required',
+            'value11' => 'required',
+            'value12' => 'required',
+            'value13' => 'required',
         ]);
-    }
-   
+    
+    
+        $additionalItems = [
+            ['item_id' => 3, 'input_name' => $validatedData['value3']],
+            ['item_id' => 4, 'input_name' => $validatedData['value4']],
+            ['item_id' => 5, 'input_name' => $validatedData['value5']],
+            ['item_id' => 6, 'input_name' => $validatedData['value6']],
+            ['item_id' => 8, 'input_name' => $validatedData['value8']],
+            ['item_id' => 9, 'input_name' => $validatedData['value9']],
+            ['item_id' => 10, 'input_name' => $validatedData['value10']],
+            ['item_id' => 11, 'input_name' => $validatedData['value11']],
+            ['item_id' => 12, 'input_name' => $validatedData['value12']],
+            ['item_id' => 13, 'input_name' => $validatedData['value13']],
+        ];
 
-    return redirect()->back()->with('success', 'Data inserted successfully!');
+        // Merge the arrays
+        $items = array_merge($items, $additionalItems);
+    
+        foreach ($items as $item) {
+            Selection::create([
+                'item_id' => $item['item_id'],
+                'selected_number' => $item['input_name'],
+            ]);
+        }
+    
+        return redirect()->back()->with('success', 'Data inserted successfully!');
 }
 
 public function handleTestSelection(Request $request)
@@ -73,11 +91,43 @@ public function handleTestSelection(Request $request)
 
     public function handleModalSelection(Request $request)
     {
-        $validatedData = $request->validate([
-            'selectedRegion' => 'required',
-        ]);
-        $data = $request->input('selectedRegion');
-        dd($data);
-    }
+        $selectedRegions = $request->input('selectedRegion');
+        $selectedRegionArray = json_decode($selectedRegions);
+    
+        // You don't need to validate the input names, as they are not user input
+    
+        $items = [];
+    
+        foreach ($selectedRegionArray as $input_name) {
+            $items[] = [
+                'item_id' => 1,
+                'input_name' => (int)$input_name,
+            ];
+        }
+    
+        // Additional items to add
+        $additionalItems = [
+            ['item_id' => 3, 'input_name' => 'value3'],
+            ['item_id' => 4, 'input_name' => 'value4'],
+            ['item_id' => 5, 'input_name' => 'value5'],
+            ['item_id' => 6, 'input_name' => 'value6'],
+            ['item_id' => 8, 'input_name' => 'value8'],
+            ['item_id' => 9, 'input_name' => 'value9'],
+            ['item_id' => 10, 'input_name' => 'value10'],
+            ['item_id' => 11, 'input_name' => 'value11'],
+            ['item_id' => 12, 'input_name' => 'value12'],
+            ['item_id' => 13, 'input_name' => 'value13'],
+        ];
+    
+        // Merge the arrays
+        $items = array_merge($items, $additionalItems);
+    
+        foreach ($items as $item) {
+            Selection::create([
+                'item_id' => $item['item_id'],
+                'selected_number' => $item['input_name'],
+            ]);
+        }
 
+    }
 }
