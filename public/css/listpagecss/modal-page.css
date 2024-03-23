@@ -62,14 +62,21 @@
     margin-bottom: 20px
 }
 
+.whole-corporateStatus
+{
+    display:flex;
+    height: 200px;
+}
+
 .whole-prefectures
 {
     display: flex;
+    height: 470px;
 }
 
 .flex-prefectures
 {
-    height: 470px;
+    height: 100%;
     flex: 1;
     display: flex;
     flex-direction: column;

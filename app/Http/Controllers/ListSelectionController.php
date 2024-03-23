@@ -20,14 +20,27 @@ class ListSelectionController extends Controller
         
         $items = [];
         
-        foreach ($selectedRegionArray as $input_name) {
+        foreach ($selectedRegionArray as $selected_number) {
                 $items[] = [
                     'item_id' => 1,
-                    'input_name' => $regionMapping[$input_name],
+                    'selected_number' => $regionMapping[$selected_number],
                 ];
         }
         // 都道府県↑
 
+        $selectedCorporateStatus = $request->input('selectedCorporateStatus');
+        $selectedRegionArray = json_decode($selectedCorporateStatus);
+
+        $corporateStatusMapping = $this->getCorporateStatusMapping();
+        
+        $corporateStatusItems = [];
+        
+        foreach ($selectedRegionArray as $selected_number) {
+                $corporateStatusItems[] = [
+                    'item_id' => 2,
+                    'selected_number' => $corporateStatusMapping[$selected_number],
+                ];
+        }
 
         $validatedData = $request->validate([
             'value3' => 'required',
@@ -44,25 +57,26 @@ class ListSelectionController extends Controller
     
     
         $additionalItems = [
-            ['item_id' => 3, 'input_name' => $validatedData['value3']],
-            ['item_id' => 4, 'input_name' => $validatedData['value4']],
-            ['item_id' => 5, 'input_name' => $validatedData['value5']],
-            ['item_id' => 6, 'input_name' => $validatedData['value6']],
-            ['item_id' => 8, 'input_name' => $validatedData['value8']],
-            ['item_id' => 9, 'input_name' => $validatedData['value9']],
-            ['item_id' => 10, 'input_name' => $validatedData['value10']],
-            ['item_id' => 11, 'input_name' => $validatedData['value11']],
-            ['item_id' => 12, 'input_name' => $validatedData['value12']],
-            ['item_id' => 13, 'input_name' => $validatedData['value13']],
+            ['item_id' => 3, 'selected_number' => $validatedData['value3']],
+            ['item_id' => 4, 'selected_number' => $validatedData['value4']],
+            ['item_id' => 5, 'selected_number' => $validatedData['value5']],
+            ['item_id' => 6, 'selected_number' => $validatedData['value6']],
+            ['item_id' => 8, 'selected_number' => $validatedData['value8']],
+            ['item_id' => 9, 'selected_number' => $validatedData['value9']],
+            ['item_id' => 10, 'selected_number' => $validatedData['value10']],
+            ['item_id' => 11, 'selected_number' => $validatedData['value11']],
+            ['item_id' => 12, 'selected_number' => $validatedData['value12']],
+            ['item_id' => 13, 'selected_number' => $validatedData['value13']],
         ];
 
         // Merge the arrays
-        $items = array_merge($items, $additionalItems);
-    
+        $items = array_merge($items, $corporateStatusItems, $additionalItems);
+
+ 
         foreach ($items as $item) {
             Selection::create([
                 'item_id' => $item['item_id'],
-                'selected_number' => $item['input_name'],
+                'selected_number' => $item['selected_number'],
             ]);
         }
     
@@ -120,6 +134,24 @@ private function getRegionMapping() {
         "沖縄県" => 47,
     ];
 }
+
+
+function getCorporateStatusMapping() {
+    return [
+        "株式会社" => 1,
+        "合名会社"=> 2,
+        "特定非営利活動法人"=> 3,
+        "有限会社"=> 4,
+        "社会福祉法人"=> 5,
+        "学校法人"=> 6,
+        "合同会社"=> 7,
+        "社団法人"=> 8,
+        "財団法人"=> 9,
+        "合資会社"=> 10,
+        "その他"=> 11,
+    ];
+}
+
 
 
 public function handleTestSelection(Request $request)

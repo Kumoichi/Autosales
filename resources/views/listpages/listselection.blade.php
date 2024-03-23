@@ -17,6 +17,8 @@
 <div style="margin-left:21%;">項目で詳細条件を選択してください</div> 
     <!-- 都道府県のモーダルウィンドウ -->
     @include('listpages.prefectures-modal')
+    <!-- 法人格モーダルウィンドウ -->
+    @include('listpages.corporateStatus-modal')
 
     <form class="listselection_container" id="data-form" action="{{ route('handle.list.selection') }}" method="POST">
     @csrf
@@ -31,11 +33,11 @@
                 <div class="underline"></div>
             </div>
 
-
             <!-- 法人格 -->
             <div class="inner-box">
                 <div class="nested-div-description">法人格：</div>
-                <div class="nested-div-choice">法人格を選択してください<div class="down-arrow">&#9660;</div></div>  
+                <div class="nested-div-choice corporateStatus" onclick="openCorporateStatusModal()">法人格を選択してください<div class="down-arrow">&#9660;</div></div>
+                <input type="hidden" id="selectedCorporateStatus" name="selectedCorporateStatus">
                 <div class="underline"></div>    
             </div>
 
@@ -47,7 +49,6 @@
                     <span class="divider">~</span>
                     <input type="text" name="value4" placeholder="￥" class="inner-box hori" style="padding-left: 8px;">
                 </div>
-
                 <div class="underline"></div>
             </div>
 
