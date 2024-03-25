@@ -19,42 +19,44 @@ class ListSelectionController extends Controller
         $regionMapping = $this->getRegionMapping();
         
         $items = [];
-        
-        foreach ($selectedRegionArray as $selected_number) {
-                $items[] = [
-                    'item_id' => 1,
-                    'selected_number' => $regionMapping[$selected_number],
-                ];
+        if($selectedRegionArray != null){
+            foreach ($selectedRegionArray as $selected_number) {
+                    $items[] = [
+                        'item_id' => 1,
+                        'selected_number' => $regionMapping[$selected_number],
+                    ];
+            }
         }
         // 都道府県↑
 
         $selectedCorporateStatus = $request->input('selectedCorporateStatus');
-        $selectedRegionArray = json_decode($selectedCorporateStatus);
+        $selectedCorporateStatus = json_decode($selectedCorporateStatus);
 
         $corporateStatusMapping = $this->getCorporateStatusMapping();
         
         $corporateStatusItems = [];
-        
-        foreach ($selectedRegionArray as $selected_number) {
-                $corporateStatusItems[] = [
-                    'item_id' => 2,
-                    'selected_number' => $corporateStatusMapping[$selected_number],
-                ];
+        if (!empty($selectedCorporateStatus)) {
+            foreach ($selectedCorporateStatus as $selected_number) {
+                    $corporateStatusItems[] = [
+                        'item_id' => 2,
+                        'selected_number' => $corporateStatusMapping[$selected_number],
+                    ];
+            }
         }
 
+        
         $validatedData = $request->validate([
-            'value3' => 'required',
-            'value4' => 'required',
-            'value5' => 'required',
-            'value6' => 'required',
-            'value8' => 'required',
-            'value9' => 'required',
-            'value10' => 'required',
-            'value11' => 'required',
-            'value12' => 'required',
-            'value13' => 'required',
+            'value3' => 'nullable',
+            'value4' => 'nullable',
+            'value5' => 'nullable',
+            'value6' => 'nullable',
+            'value8' => 'nullable',
+            'value9' => 'nullable',
+            'value10' => 'nullable',
+            'value11' => 'nullable',
+            'value12' => 'nullable',
+            'value13' => 'nullable',
         ]);
-    
     
         $additionalItems = [
             ['item_id' => 3, 'selected_number' => $validatedData['value3']],
@@ -72,7 +74,12 @@ class ListSelectionController extends Controller
         // Merge the arrays
         $items = array_merge($items, $corporateStatusItems, $additionalItems);
 
- 
+        $items = array_filter($items, function ($item) {
+            return $item['selected_number'] !== null;
+        });
+
+        // dd($items);
+
         foreach ($items as $item) {
             Selection::create([
                 'item_id' => $item['item_id'],

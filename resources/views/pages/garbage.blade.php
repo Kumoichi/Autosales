@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/title.css') }}"> 
 
     <title>Document</title>
- 
 </head>
 <body class="selectionphase">
     <div>
@@ -22,7 +21,7 @@
                 <ul id="targetList">
                     @foreach($names as $name)
                         <li>
-                            <a href="#" class="circle" data-target="{{ $name }}"><span class="inner-circle"></span></a> {{ $name }}
+                            <a href="#" class="circle" data-target="{{ $name }}"></a> {{ $name }}
                         </li>
                     @endforeach
                 </ul>
@@ -58,6 +57,7 @@
                         c.classList.remove('active');
                     });
                     event.target.classList.add('active');
+                    event.target.style.backgroundColor = 'black';
                 });
             });
         });
