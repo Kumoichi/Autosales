@@ -28,12 +28,11 @@ services:
             - mailpit
             - selenium
     mysql:
-        image: 'mysql/mysql-server:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
             MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            MYSQL_ROOT_HOST: '%'
+            MYSQL_ROOT_HOST: '${DB_HOST}'
             MYSQL_DATABASE: '${DB_DATABASE}'
             MYSQL_USER: '${DB_USERNAME}'
             MYSQL_PASSWORD: '${DB_PASSWORD}'
@@ -41,6 +40,7 @@ services:
         volumes:
             - 'sail-mysql:/var/lib/mysql'
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+            - ./db/initDB.sql:/docker-entrypoint-initdb.d/initDB.sql
         networks:
             - sail
         healthcheck:
@@ -51,6 +51,8 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
+        build: 
+            context: ./db  # Dockerfileのディレクトリを指定
     redis:
         image: 'redis:alpine'
         ports:
@@ -100,6 +102,30 @@ services:
             - '/dev/shm:/dev/shm'
         networks:
             - sail
+
+    # Web スクレイピングを実行するコンテナ
+    scraping-app:
+        build: 
+            context: ./app/Scraping  # Dockerfileのディレクトリを指定
+        volumes:
+            - type: bind
+            -  /var/run/docker.sock:/var/run/docker.sock
+            - source: ./app/Scraping
+            - target: /opt/app
+        environment:
+            DB_USER: '${DB_USERNAME}'  # 環境変数からの取得
+            DB_PASSWORD: '${DB_PASSWORD}'  # 環境変数からの取得
+            DB_DATABASE: '${DB_DATABASE}'  # 環境変数からの取得
+            DB_HOST: '${DB_CONNECTION}'  # 環境変数からの取得
+            DB_PORT: '${DB_PORT}'  # 環境変数からの取得
+            TZ: Asia/Tokyo
+        depends_on:
+            - selenium
+            - mysql
+        tty: true
+        networks:
+            - sail
+
 networks:
     sail:
         driver: bridge

@@ -1,0 +1,3 @@
+login_url = https://nxw-is--ergodev.sandbox.my.salesforce.com/
+id = hikaru-osada@ergo-se.co.jp
+password = @ergo0157
