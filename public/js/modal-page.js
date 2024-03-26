@@ -107,3 +107,81 @@ function updateSelectedCorporateStatus(){
     document.querySelector(".nested-div-choice.corporateStatus").innerText = selectedCorporateStatus.join(",");
     document.getElementById("selectedCorporateStatus").value = JSON.stringify(selectedCorporateStatus);
 }
+
+
+
+
+
+
+// ーーーーーーーーーーここから業種ーーーーーーーーーーーーーーー
+
+function openIndustryModal(){
+        document.getElementById("industryModal").style.display = "block";
+    }
+
+    // Make closeModal function
+    function closeIndustryModal(){
+        document.getElementById("industryModal").style.display = "none";
+    }
+
+    function toggleAllIndustryCheckboxes() {
+    var selectAllCheckbox = document.getElementById("selectAllIndustryCheckbox");
+    var wrapCheckboxes = document.querySelectorAll(".wrap-checkbox");
+    var checkboxes = document.querySelectorAll(".industry-checkbox");
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
+
+    wrapCheckboxes.forEach(function(checkbox) {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
+    updateSelectedIndustry();
+}
+
+
+
+function toggleCheckboxes(industry) {
+        var selectCheckbox = document.getElementById("select" + industry + "Checkbox");
+        var checkboxes = document.querySelectorAll(".industry-checkbox." + industry);
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = selectCheckbox.checked;
+        });
+        updateSelectedIndustry();
+    }
+
+
+// 選択しないが選択されたとき
+function deselectAllIndustry() {
+    var checkboxes = document.querySelectorAll(".industry-checkbox");
+    var wrapCheckbox = document.querySelectorAll(".wrap-checkbox");
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+    });
+
+    wrapCheckbox.forEach(function(checkbox) {
+        checkbox.checked = false;
+    });
+
+
+
+    updateSelectedIndustry();
+}
+
+var selectedIndustry = [];
+
+function updateSelectedIndustry() {
+    var checkboxes = document.querySelectorAll(".industry-checkbox");
+    var selectedIndustry = [];
+
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            selectedIndustry.push(checkbox.value);
+        }
+    });
+
+    document.querySelector(".nested-div-choice").innerText = selectedIndustry.join(",");
+    document.getElementById("selectedIndustryInput").value = JSON.stringify(selectedIndustry);
+}

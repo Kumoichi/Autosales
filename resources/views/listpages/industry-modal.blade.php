@@ -36,29 +36,7 @@
     transform: translateY(-50%); 
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
 
-.modal-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    height: 300px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
-    position: relative;
-}
 
 .modal-content-insidebox
 {
@@ -139,103 +117,6 @@
         </div>
     </div>
 </div>
-
-
-<!-- make form here -->
-<form id="regionForm" action="{{ route('handle.modal.selection') }}" method="POST">
-    @csrf
-    <input type="hidden" id="selectedIndustryInput" name="selectedIndustry">
-</form>
-
-<!-- make submit button here -->
-<button onclick="submitForm()">Submit</button>
-
-
-<a href="/getsession-page">jump to another page</a>
-<script>
-
-
-
-function openIndustryModal(){
-        document.getElementById("industryModal").style.display = "block";
-    }
-
-    // Make closeModal function
-    function closeIndustryModal(){
-        document.getElementById("industryModal").style.display = "none";
-    }
-
-    function toggleAllIndustryCheckboxes() {
-    var selectAllCheckbox = document.getElementById("selectAllIndustryCheckbox");
-    var wrapCheckboxes = document.querySelectorAll(".wrap-checkbox");
-    var checkboxes = document.querySelectorAll(".industry-checkbox");
-
-    checkboxes.forEach(function(checkbox) {
-        checkbox.checked = selectAllCheckbox.checked;
-    });
-
-    wrapCheckboxes.forEach(function(checkbox) {
-        checkbox.checked = selectAllCheckbox.checked;
-    });
-    updateSelectedIndustry();
-}
-
-
-
-function toggleCheckboxes(industry) {
-        var selectCheckbox = document.getElementById("select" + industry + "Checkbox");
-        var checkboxes = document.querySelectorAll(".industry-checkbox." + industry);
-
-        checkboxes.forEach(function(checkbox) {
-            checkbox.checked = selectCheckbox.checked;
-        });
-        updateSelectedIndustry();
-    }
-
-
-// 選択しないが選択されたとき
-function deselectAllIndustry() {
-    var checkboxes = document.querySelectorAll(".industry-checkbox");
-    var wrapCheckbox = document.querySelectorAll(".wrap-checkbox");
-
-    checkboxes.forEach(function(checkbox) {
-        checkbox.checked = false;
-    });
-
-    wrapCheckbox.forEach(function(checkbox) {
-        checkbox.checked = false;
-    });
-
-
-
-    updateSelectedIndustry();
-}
-
-var selectedIndustry = [];
-
-// チェックマーク、すべて、選択しないが選択されたとき
-function updateSelectedIndustry() {
-    var checkboxes = document.querySelectorAll(".industry-checkbox");
-    var selectedIndustry = [];
-
-    checkboxes.forEach(function(checkbox) {
-        if (checkbox.checked) {
-            selectedIndustry.push(checkbox.value);
-        }
-    });
-
-    document.querySelector(".nested-div-choice").innerText = selectedIndustry.join(",");
-    document.getElementById("selectedIndustryInput").value = JSON.stringify(selectedIndustry);
-}
-
-
-
-function submitForm()
-    {
-        document.getElementById("regionForm").submit();
-    }
-
-</script>
 </body>
 </html>
 

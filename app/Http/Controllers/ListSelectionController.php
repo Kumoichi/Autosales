@@ -27,8 +27,9 @@ class ListSelectionController extends Controller
                     ];
             }
         }
-        // 都道府県↑
 
+
+        // 法人格
         $selectedCorporateStatus = $request->input('selectedCorporateStatus');
         $selectedCorporateStatus = json_decode($selectedCorporateStatus);
 
@@ -44,6 +45,21 @@ class ListSelectionController extends Controller
             }
         }
 
+
+        // 業種
+        $selectedIndustry = $request->input('selectedIndustry');
+        $selectedIndustry = json_decode($selectedIndustry);
+        
+        dd($selectedIndustry);
+        $corporateStatusItems = [];
+        if (!empty($selectedCorporateStatus)) {
+            foreach ($selectedCorporateStatus as $selected_number) {
+                    $corporateStatusItems[] = [
+                        'item_id' => 2,
+                        'selected_number' => $corporateStatusMapping[$selected_number],
+                    ];
+            }
+        }
         
         $validatedData = $request->validate([
             'value3' => 'nullable',
@@ -173,7 +189,7 @@ public function handleTestSelection(Request $request)
 
 public function handleModalSelection(Request $request)
     {
-        $selectedRegions = $request->input('selectedRegion');
+        $selectedRegions = $request->input('selectedIndustry');
         $selectedRegionArray = json_decode($selectedRegions);
 
         dd($selectedRegionArray);

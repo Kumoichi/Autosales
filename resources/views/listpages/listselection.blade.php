@@ -19,6 +19,8 @@
     @include('listpages.prefectures-modal')
     <!-- 法人格モーダルウィンドウ -->
     @include('listpages.corporateStatus-modal')
+    <!-- 業種モーダルウィンドウ -->
+    @include('listpages.industry-modal')
 
     <form class="listselection_container" id="data-form" action="{{ route('handle.list.selection') }}" method="POST">
     @csrf
@@ -64,11 +66,19 @@
         </div>
 
         <!-- 右側 -->
+
+
         <!-- 業種 -->
         <div class="two-box bigger">
+            <!-- <div class="inner-box">
+                <div class="nested-div-description">業種：</div>
+                <div class="f">業種を選択してください<div class="down-arrow">&#9660;</div></div>
+                <div class="underline"></div>
+            </div> -->
             <div class="inner-box">
                 <div class="nested-div-description">業種：</div>
-                <div class="nested-div-choice">業種を選択してください<div class="down-arrow">&#9660;</div></div>
+                <div class="nested-div-choice" onclick="openIndustryModal()">業種を選択してください<div class="down-arrow">&#9660;</div></div>
+                <input type="hidden" id="selectedIndustryInput" name="selectedIndustry">
                 <div class="underline"></div>
             </div>
 
