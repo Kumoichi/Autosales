@@ -15,12 +15,7 @@
 </div>
 
 
-<p>Selected Target: {{ $targetName }}</p>
-@if ($locationData)
-    <p>Location Data: {{ $locationData }}</p>
-@else
-    <p>No location data found for {{ $targetName }}</p>
-@endif
+
 
 <div class="white-back">
     
@@ -31,43 +26,12 @@
             <div id="selectedTemplateContentContainer"></div>
         </div>
     </div>
-</div>
+</div>  
 
 
-<div class="center-container">
-        <div class="button-wrapper">
-            <a href="templateselection" class="pagemovement-button">前のページ</a>
-            <a href="timeselection" id="openModal" class="pagemovement-button">テンプレートを選択</a>
-        </div>
-        <a href="targetselection" class="firstpage-button">最初から設定</a>
-    </div>
-<!-- 
-<div class="center-container">
-        <div class="button-wrapper">
-            <a href="templateselection" class="pagemovement-button">前へ戻る</a>
-            <a href="summary-page" id="openModal" class="pagemovement-button">配信画面の設定</a>
-        </div>
-        <a href="targetselection" class="firstpage-button">最初から設定</a>
-    </div> -->
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    var selectedTargetValue = sessionStorage.getItem('selectedTarget');
-    if (selectedTargetValue) {
-        var selectedTarget = document.getElementById('selectedTarget');
-        selectedTarget.textContent = selectedTargetValue; 
-    }
-});
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var selectedTemplateContent = sessionStorage.getItem('selectedTemplateContent');
-            if (selectedTemplateContent) {
-                var selectedTemplateContentContainer = document.getElementById('selectedTemplateContentContainer');
-                selectedTemplateContentContainer.textContent = selectedTemplateContent;
-            }
-        });
-
 
     </script>
 </body>

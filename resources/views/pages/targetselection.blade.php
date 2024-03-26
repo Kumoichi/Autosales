@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/targetselection.css') }}"> 
-    <link rel="stylesheet" href="{{ asset('css/title.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('css/title.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bottomButton.css') }}"> 
+ 
 
     <title>Document</title>
  
@@ -32,10 +34,13 @@
             @csrf 
             <input type="hidden" name="targetName" id="targetNameInput">
         </form>
+    </div>
 
-        <div class="center-container">
-            <a href="dashboard" class="pagemovement-button">前へもどる</a>
-            <a href="#" onclick="submitForm();" class="pagemovement-button">コンテンツを選択</a>
+    <div class="center-bottom-buttons">
+        <div class="button-wrapper">
+            <a href="contentselection" class="pagemovement-button left">前へ戻る</a>
+            <a href="contentselection" class="pagemovement-button under">最初から設定</a>
+            <div id="openModal" onclick="submitForm()" class="pagemovement-button right">確認画面へ進む</div>
         </div>
     </div>
 

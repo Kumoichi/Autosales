@@ -32,13 +32,16 @@ Route::get('/dashboard', [CustomAuthController::class, 'dashboard'])->middleware
 Route::get('/logout',[CustomAuthController::class, 'logout']);
 Route::get('/listselection',[ListSelectionController::class, 'listselection']);
 
-Route::post('/templateselection',[SendingController::class, 'handleTemplateSelection'])->name('handle.template.selection');
-Route::get('/templateselection',[SendingController::class, 'templateselection'])->name('handle.template.selection');
+Route::post('/handle-template-selection',[SendingController::class, 'handleTemplateSelection'])->name('handle.template.selection');
+Route::get('/templateselection',[SendingController::class, 'showTemplateSelectionPage']);
+
+Route::post('/handle-content-selection',[SendingController::class, 'handleContentSelection'])->name('handle.content.selection');
+Route::get('/contentselection', [SendingController::class, 'showContentSelectionPage'])->name('contentselection');
 
 Route::post('/handle-target-selection', [SendingController::class, 'handleTargetSelection'])->name('handle.target.selection');
-Route::get('/targetselection',[SendingController::class, 'targetselection']);
+Route::get('/targetselection',[SendingController::class, 'showTargetSelectionPage'])->name('targetselection');
 
-Route::get('/contentselection', [SendingController::class, 'showContentSelectionPage'])->name('contentselection');
+
 Route::get('/summary-page/{targetName}', [SendingController::class, 'showSummaryPage'])->name('summary-page');
 Route::get('/timeselection',[SendingController::class, 'timeselection']);
 

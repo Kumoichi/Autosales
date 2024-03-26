@@ -10,23 +10,11 @@ use Illuminate\Http\Request;
 
 class SendingController extends Controller
 {
-    public function targetselection()
-    {
-        $target = Target::all();
-        $name = Target::pluck('name');
-        return view('pages/targetselection',['names' => $name]);
-    }
-
-    // public function contentselection()
-    // {
-    //     return view('pages/contentselection');
-    // }
 
     public function timeselection()
     {
         return view('pages/timeselection');
     }
-
 
     public function targetName()
     {
@@ -37,44 +25,69 @@ class SendingController extends Controller
         return view('another-page',['names' => $name]);
     }
 
-    public function handleTemplateSelection(Request $request)
-    {
-        $templateTitle = $request->input('selectedBox');
-        $request->session()->put('templateTitle', $templateTitle);
-        // dd($templateTitle);
-
-        return redirect()->route('contentselection');
-    }
-
-    public function templateselection()
+    public function showTemplateSelectionPage()
     {
         return view('pages/templateselection');
     }
 
+    public function handleTemplateSelection(Request $request)
+    {
+        $templateTitle = $request->input('selectedTemplate');
+        $request->session()->put('templateTitle', $templateTitle);
 
+        return redirect()->route('contentselection');
+    }
 
+    public function showContentSelectionPage(Request $request)
+    {
+        return view('pages/contentselection');
+    }
 
-   
+    public function handleContentSelection(Request $request)
+    {
+        $contentURL = $request->input('selectedContent');
+        $request->session()->put('contentURL', $contentURL);
 
-public function handleTargetSelection(Request $request)
+        return redirect()->route('targetselection');
+    }
+
+    public function showTargetSelectionPage()
+    {
+        return view('pages/targetselection');
+    }
+
+    public function handleTargetSelection(Request $request)
 {
     $targetName = $request->input('targetName');
+    $targetNumberMapping = $this->getTargetNameMapping();
 
-    return redirect()->route('contentselection')->with('targetName', $targetName);
+    // Get the target number corresponding to the target name
+    $targetNumber = $targetNumberMapping[$targetName] ?? null;
+
+    // Check if the target name exists in the mapping
+    if ($targetNumber !== null) {
+        $request->session()->put('targetNumber', $targetNumber);
+    }
+    return view('summary-page');
 }
 
-public function showContentSelectionPage(Request $request)
+function getTargetNameMapping()
 {
-    return view('pages/contentselection');
+    return [
+        "ターゲットA" => "1",
+        "ターゲットB" => "2",
+        "ターゲットC" => "3",
+        "ターゲットD" => "4",
+    ];
 }
+
 
 
 
 
 public function showSummaryPage($targetName)
 {
-    $locationData = $this->fetchLocationData($targetName);
-    return view('summary-page', ['targetName' => $targetName, 'locationData' => $locationData]);
+    return view('summary-page');
 }
 
 

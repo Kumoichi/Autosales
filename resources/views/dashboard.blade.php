@@ -17,7 +17,7 @@
     <div class="box" id="box1">IS活動</div>
     <a href="listselection"><div class="box" id="box2"><i class="far fa-list-alt"></i>リスト調達</div></a>
     <div class="box" id="box3">商談分析</div>
-    <a href="targetselection"><div class="box" id="box4"><i class="fa-solid fa-envelope"></i>メール配信指示</div></a>
+    <a href="templateselection"><div class="box" id="box4"><i class="fa-solid fa-envelope"></i>メール配信指示</div></a>
 
 </div>
 

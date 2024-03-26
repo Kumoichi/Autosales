@@ -20,10 +20,10 @@
 
 <div class="white-back">
     <p class="green-underline">テンプレートを選択</p>
-    <a href="summary-page" class="skip-button">テンプレートを選択せず、配信内容へ進む</a>
+    <a href="contentselection" class="skip-button">テンプレートを選択せず、配信内容へ進む</a>
     <form id="templateForm" action="{{ route('handle.template.selection') }}" method="POST">
         @csrf
-        <<div class="template" id="templateOne" onclick="selectTemplate('templateTitleOne', this)">
+        <div class="template" id="templateOne" onclick="selectTemplate('templateTitleOne', this)">
             <input name="templateTitle" id="templateTitleOne" type="hidden" value="1">ベーステンプレート1
         </div> 
 
@@ -52,15 +52,15 @@
         </div>
 
 
-        <input type="hidden" name="selectedBox" id="selectedBox">
+        <input type="hidden" name="selectedTemplate" id="selectedBox">
     </form>
 
 </div>
 
-<div class="center-container">
+<div class="center-bottom-buttons">
     <div class="button-wrapper">
-        <a href="contentselection" class="pagemovement-button">前のページ</a>
-        <div id="openModal" onclick="submitForm()" class="pagemovement-button">テンプレート選択</div>
+        <a href="contentselection" class="pagemovement-button left">前のページ</a>
+        <div id="openModal" onclick="submitForm()" class="pagemovement-button right">テンプレートを選択</div>
     </div>
 </div>
 

@@ -1,8 +1,37 @@
-
 .center-bottom-buttons
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
+
+.button-wrapper
+{
+    position: relative;
+}
+
+.pagemovement-button.left
+{
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    
+}
+.pagemovement-button.right
+{
+    position: absolute;
+    width: 180px;
+    top: 50px;
+    left: 40px;
+}
+.pagemovement-button.under
+{
+    position: absolute;
+    top: 120px;
+    right: 20px;
+}
+
 
 .pagemovement-button {
     background-color: #11A7B7;
