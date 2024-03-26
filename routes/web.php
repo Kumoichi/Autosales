@@ -42,7 +42,7 @@ Route::post('/handle-target-selection', [SendingController::class, 'handleTarget
 Route::get('/targetselection',[SendingController::class, 'showTargetSelectionPage'])->name('targetselection');
 
 
-Route::get('/summary-page/{targetName}', [SendingController::class, 'showSummaryPage'])->name('summary-page');
+Route::get('/summary-page', [SendingController::class, 'showSummaryPage'])->name('summary-page');
 Route::get('/timeselection',[SendingController::class, 'timeselection']);
 
 
@@ -69,5 +69,4 @@ Route::get('/modal-page', [SendingController::class, 'modalPage'])->name('modal-
 Route::post('/handle-modal-selection', [ListSelectionController::class, 'handleModalSelection'])->name('handle.modal.selection');
 
 
-// Route::get('/summary-page', [SendingController::class, 'showSummaryPage'])->name('summary-page');
 

@@ -13,21 +13,12 @@ class SendingController extends Controller
 
     public function timeselection()
     {
-        return view('pages/timeselection');
-    }
-
-    public function targetName()
-    {
-        $target = Target::all();
-
-        $name = Target::pluck('name');
-
-        return view('another-page',['names' => $name]);
+        return view('sendingpages/timeselection');
     }
 
     public function showTemplateSelectionPage()
     {
-        return view('pages/templateselection');
+        return view('sendingpages/templateselection');
     }
 
     public function handleTemplateSelection(Request $request)
@@ -40,7 +31,7 @@ class SendingController extends Controller
 
     public function showContentSelectionPage(Request $request)
     {
-        return view('pages/contentselection');
+        return view('sendingpages/contentselection');
     }
 
     public function handleContentSelection(Request $request)
@@ -53,7 +44,7 @@ class SendingController extends Controller
 
     public function showTargetSelectionPage()
     {
-        return view('pages/targetselection');
+        return view('sendingpages/targetselection');
     }
 
     public function handleTargetSelection(Request $request)
@@ -68,7 +59,7 @@ class SendingController extends Controller
     if ($targetNumber !== null) {
         $request->session()->put('targetNumber', $targetNumber);
     }
-    return view('summary-page');
+    return redirect()->route('summary-page');
 }
 
 function getTargetNameMapping()
@@ -82,15 +73,23 @@ function getTargetNameMapping()
 }
 
 
-
-
-
-public function showSummaryPage($targetName)
+public function showSummaryPage()
 {
-    return view('summary-page');
+    return view('sendingpages/summary-page');
 }
 
 
+
+// ここから下練習ファイル
+
+public function targetName()
+{
+    $target = Target::all();
+
+    $name = Target::pluck('name');
+
+    return view('another-page',['names' => $name]);
+}
 
 private function fetchLocationData($targetName)
 {
