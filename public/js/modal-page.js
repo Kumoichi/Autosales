@@ -182,6 +182,6 @@ function updateSelectedIndustry() {
         }
     });
 
-    document.querySelector(".nested-div-choice").innerText = selectedIndustry.join(",");
+    document.querySelector(".nested-div-choice.industry").innerText = selectedIndustry.join(",");
     document.getElementById("selectedIndustryInput").value = JSON.stringify(selectedIndustry);
 }

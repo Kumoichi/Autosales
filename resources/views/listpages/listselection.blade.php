@@ -77,7 +77,7 @@
             </div> -->
             <div class="inner-box">
                 <div class="nested-div-description">業種：</div>
-                <div class="nested-div-choice" onclick="openIndustryModal()">業種を選択してください<div class="down-arrow">&#9660;</div></div>
+                <div class="nested-div-choice industry" onclick="openIndustryModal()">業種を選択してください<div class="down-arrow">&#9660;</div></div>
                 <input type="hidden" id="selectedIndustryInput" name="selectedIndustry">
                 <div class="underline"></div>
             </div>
