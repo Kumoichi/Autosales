@@ -1,29 +1,19 @@
 
-.center-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.center-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+.center-bottom-buttons
+{
 
-.button-wrapper {
-    display: flex;
 }
 
 .pagemovement-button {
     background-color: #11A7B7;
+    text-decoration: none;
     color: white;
     padding: 15px;
     border-radius: 15px;
-    text-decoration: none;
     width: 150px; 
     text-align: center;
     margin-right: 10px; 
+    cursor: pointer;
 }
 
 .firstpage-button {

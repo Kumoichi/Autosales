@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="{{ asset('css/bottomButton.css') }}"> 
     <link rel="stylesheet" href="{{ asset('css/templateselection.css') }}"> 
 
-
-
     <title>Document</title>
+    <style>
 
+    </style>
 </head>
 <body class="selectionphase">
 <div>
@@ -19,60 +19,78 @@
 </div>
 
 <div class="white-back">
-        <p class="green-underline">テンプレートを選択</p>
-        <a href="summary-page" class="skip-button">テンプレートを選択せず、配信内容へ進む</a>
+    <p class="green-underline">テンプレートを選択</p>
+    <a href="summary-page" class="skip-button">テンプレートを選択せず、配信内容へ進む</a>
+    <form id="templateForm" action="{{ route('handle.template.selection') }}" method="POST">
+        @csrf
+        <<div class="template" id="templateOne" onclick="selectTemplate('templateTitleOne', this)">
+            <input name="templateTitle" id="templateTitleOne" type="hidden" value="1">ベーステンプレート1
+        </div> 
 
-        @foreach($template as $templateItem)
-        <div class="template-one" onclick="selectTemplate(this, '{{ $templateItem->id }}', '{{ $templateItem->template }}')">
-        {!! $templateItem->template !!}
-    </div>
-@endforeach
-
-
-
-    
-    <div class="center-container">
-        <div class="button-wrapper">
-            <a href="contentselection" class="pagemovement-button">前のページ</a>
-            <a href="summary-page" id="openModal" class="pagemovement-button">確認画面に進む</a>
+        <div class="template" id="templateTwo" onclick="selectTemplate('templateTitleTwo', this)">
+            <input name="templateTitle" id="templateTitleTwo" type="hidden" value="2">ベーステンプレート2
         </div>
-        <a href="targetselection" class="firstpage-button">最初から設定</a>
+
+        <div class="template" id="templateThree" onclick="selectTemplate('templateTitleThree', this)">
+            <input name="templateTitle" id="templateTitleThree" type="hidden" value="3">ベーステンプレート3
+        </div>
+
+        <div class="template" id="templateFour" onclick="selectTemplate('templateTitleFour', this)">
+            <input name="templateTitle" id="templateTitleFour" type="hidden" value="4">ベーステンプレート4
+        </div>
+
+        <div class="template" id="templateFive" onclick="selectTemplate('templateTitleFive', this)">
+            <input name="templateTitle" id="templateTitleFive" type="hidden" value="5">ベーステンプレート5
+        </div>
+
+        <div class="template" id="templateSix" onclick="selectTemplate('templateTitleSix', this)">
+            <input name="templateTitle" id="templateTitleSix" type="hidden" value="6">ベーステンプレート6
+        </div>
+
+        <div class="template" id="templateSeven" onclick="selectTemplate('templateTitleSeven', this)">
+            <input name="templateTitle" id="templateTitleSeven" type="hidden" value="7">ベーステンプレート7
+        </div>
+
+
+        <input type="hidden" name="selectedBox" id="selectedBox">
+    </form>
+
+</div>
+
+<div class="center-container">
+    <div class="button-wrapper">
+        <a href="contentselection" class="pagemovement-button">前のページ</a>
+        <div id="openModal" onclick="submitForm()" class="pagemovement-button">テンプレート選択</div>
     </div>
+</div>
+
+<script>
+    let selectedTemplate = null;
+
+    function selectTemplate(templateId, element) {
+        selectedTemplate = document.getElementById(templateId).value;
+        
+        // Remove red border from previously selected template
+        let allTemplates = document.querySelectorAll('.template');
+        allTemplates.forEach(template => {
+            template.style.borderColor = 'gray';
+        });
+
+        // Add red border to the clicked template
+        element.style.borderColor = 'orange';
+
+        console.log("Selected Template Value:", selectedTemplate);
+    }
+
+    function submitForm() {
+        if (selectedTemplate) {
+            document.getElementById("selectedBox").value = selectedTemplate;
+            document.getElementById("templateForm").submit();
+        } else {
+            alert("テンプレートを選択してください");
+        }
+    }
+</script>
 
 </body>
 </html>
-
-
-<script>
-function selectTemplate(selectedDiv, templateId, templateContent) {
-    console.log('Template ID:', templateId); // Log the template ID
-    console.log('Template Content:', templateContent); // Log the template content
-
-    var templateDivs = document.querySelectorAll('.template-one');
-    templateDivs.forEach(function(div) {
-        div.classList.remove('clicked');
-    });
-    // Add 'clicked' class to the clicked div
-    selectedDiv.classList.add('clicked');
-
-    // Store the selected template ID and content in sessionStorage
-    sessionStorage.setItem('selectedTemplateId', templateId);
-    sessionStorage.setItem('selectedTemplateContent', templateContent);
-}
-
-
-
-// function selectTemplate(selectedDiv, templateId) {
-//     // Remove 'clicked' class from all .template-one divs
-//     var templateDivs = document.querySelectorAll('.template-one');
-//     templateDivs.forEach(function(div) {
-//         div.classList.remove('clicked');
-//     });
-    
-//     // Add 'clicked' class to the selected div
-//     selectedDiv.classList.add('clicked');
-    
-//     // You can handle other selection actions here
-// }
-
-</script>

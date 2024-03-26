@@ -160,31 +160,28 @@ function getCorporateStatusMapping() {
 }
 
 
-
 public function handleTestSelection(Request $request)
-    {
-        $validatedData = $request->validate([
-            'data' => 'required',
-        ]);
-        
-        // Retrieve the data sent from the form
-        $data = $request->input('data');
-        dd($data);
-        
+{
 
-        Selection::create([
-            'item_id' => 7,
-            'selected_number' => $request->input('data'),
-        ]);
-        // return view ("listpages.listselection");
-        return redirect()->back()->with('success', 'Data inserted successfully!');
+    // Retrieve the data sent from the form
+    $data = $request->input('coins');
+    $request->session()->put('testsession', $data);
 
-    }
-
-
-    public function handleModalSelection(Request $request)
-    {
-        $data = $request->input('selectedRegion');
-        dd($data);
-    }
+    return view("modal-page");
 }
+
+
+public function handleModalSelection(Request $request)
+    {
+        $data = $request->input('coins');
+        dd($data);
+    }
+
+    public function getSessionData(Request $request)
+    {
+        $targetName = $request->session()->get('testsession');
+        dd($targetName);
+    }
+
+}
+

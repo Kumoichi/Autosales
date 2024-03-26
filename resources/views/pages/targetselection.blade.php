@@ -18,18 +18,15 @@
         <p class="green-underline"><span style="color: red;">＊</span>ターゲットを選択する</p>
 
         <div class="centered-container">
-            @if(isset($names) && $names->count() > 0)
-                <ul id="targetList">
-                    @foreach($names as $name)
-                        <li>
-                            <a href="#" class="circle" data-target="{{ $name }}"><span class="inner-circle"></span></a> {{ $name }}
-                        </li>
-                    @endforeach
-                </ul>
-            @else
-                <p>No names found</p>
-            @endif
-        </div>
+           
+        <ul id="targetList">
+            <li><a href="#" class="circle"><span class="inner-circle"></span></a> ターゲットA</li>
+            <li><a href="#" class="circle"><span class="inner-circle"></span></a> ターゲットB</li>
+            <li><a href="#" class="circle"><span class="inner-circle"></span></a> ターゲットC</li>
+            <li><a href="#" class="circle"><span class="inner-circle"></span></a> ターゲットD</li>
+        </ul>
+
+           </div>
 
         <form id="targetForm" action="{{ route('handle.target.selection') }}" method="post">
             @csrf 

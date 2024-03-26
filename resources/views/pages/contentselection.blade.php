@@ -30,11 +30,9 @@
         </div>
     </div>
 
-    <div class="center-container">
+    <div class="center-bottom-buttons">
         <div class="button-wrapper">
             <a href="targetselection" class="pagemovement-button">前のページ</a>
-            <!-- Updated anchor tag to point to the summary page route -->
-            <a href="{{ route('summary-page', ['targetName' => $targetName]) }}" class="pagemovement-button">Summary Page</a>
         </div>
         <a href="targetselection" class="firstpage-button">最初から設定</a>
     </div>

@@ -105,7 +105,12 @@
 
 <!-- make submit button here -->
 <button onclick="submitForm()">Submit</button>
+
+
+<a href="/getsession-page">jump to another page</a>
 <script>
+
+
 
 
 function toggleAllCheckboxes() {

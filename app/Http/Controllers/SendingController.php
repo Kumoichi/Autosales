@@ -37,11 +37,18 @@ class SendingController extends Controller
         return view('another-page',['names' => $name]);
     }
 
+    public function handleTemplateSelection(Request $request)
+    {
+        $templateTitle = $request->input('selectedBox');
+        $request->session()->put('templateTitle', $templateTitle);
+        // dd($templateTitle);
+
+        return redirect()->route('contentselection');
+    }
+
     public function templateselection()
     {
-        $template = Template::all();
-        $name = Template::pluck('template');
-        return view('pages/templateselection',['template' => $template]);
+        return view('pages/templateselection');
     }
 
 
@@ -58,11 +65,7 @@ public function handleTargetSelection(Request $request)
 
 public function showContentSelectionPage(Request $request)
 {
-    // Retrieve the targetName from the session flash data
-    $targetName = $request->session()->get('targetName');
-    $request->session()->put('testsession', $targetName);
-
-    return view('pages/contentselection', ['targetName' => $targetName]);
+    return view('pages/contentselection');
 }
 
 
@@ -88,7 +91,6 @@ private function fetchLocationData($targetName)
 }
 
 
-
 //practice function    
 public function anotherPage()
 {
@@ -101,5 +103,15 @@ public function modalPage()
     return view('modal-page');
 }
     
+
+public function submitForm(Request $request)
+    {
+        // Retrieve the selected box value from the form data
+        $selectedBox = $request->input('selectedBox');
+        dd($selectedBox);
+
+        // Now you can process the selected box value as needed, for example, save it to the database
+        // You can also return a response if needed
+    }
 }
 

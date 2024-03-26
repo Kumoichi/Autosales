@@ -32,9 +32,12 @@ Route::get('/dashboard', [CustomAuthController::class, 'dashboard'])->middleware
 Route::get('/logout',[CustomAuthController::class, 'logout']);
 Route::get('/listselection',[ListSelectionController::class, 'listselection']);
 
-Route::get('/templateselection',[SendingController::class, 'templateselection']);
+Route::post('/templateselection',[SendingController::class, 'handleTemplateSelection'])->name('handle.template.selection');
+Route::get('/templateselection',[SendingController::class, 'templateselection'])->name('handle.template.selection');
+
 Route::post('/handle-target-selection', [SendingController::class, 'handleTargetSelection'])->name('handle.target.selection');
 Route::get('/targetselection',[SendingController::class, 'targetselection']);
+
 Route::get('/contentselection', [SendingController::class, 'showContentSelectionPage'])->name('contentselection');
 Route::get('/summary-page/{targetName}', [SendingController::class, 'showSummaryPage'])->name('summary-page');
 Route::get('/timeselection',[SendingController::class, 'timeselection']);
@@ -51,6 +54,13 @@ Route::post('/handle-test-selection', [ListSelectionController::class, 'handleTe
 Route::get('/testingpage', [CustomAuthController::class, 'testingpage']);
 Route::get('/get-target-name', [SendingController::class, 'targetName'])->name('get-target-name');
 Route::get('/another-page', [SendingController::class, 'anotherPage'])->name('another-page');
+Route::get('/getsession-page', [ListSelectionController::class, 'getSessionData'])->name('getsession-page');
+
+
+Route::post('/submit-form', [SendingController::class, 'submitForm'])->name('submit.form');
+
+
+
 
 Route::get('/modal-page', [SendingController::class, 'modalPage'])->name('modal-page');
 Route::post('/handle-modal-selection', [ListSelectionController::class, 'handleModalSelection'])->name('handle.modal.selection');
