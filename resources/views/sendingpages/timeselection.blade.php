@@ -25,17 +25,15 @@
         </li>
     </ul>
     </div>
-    
 
     <div id="showMe"> @include('calendar_form')</div>
 
-    <div class="center-container">
+    <div class="center-bottom-buttons">
         <div class="button-wrapper">
-            <a href="targetselection" class="pagemovement-button">前のページ</a>
-            <a href="#" id="openModal" class="pagemovement-button">案件コードの入力</a>
+            <a href="targetselection" class="pagemovement-button left">前のページ</a>
+            <a href="#" id="openModal" class="pagemovement-button right">案件コードの入力</a>
+            <a href="targetselection" class="pagemovement-button under">最初から設定</a>
         </div>
-        <a href="targetselection" class="firstpage-button">最初から設定</a>
-    </div>
 <!-- Modal -->
 <div id="myModal" class="modal">
     <div class="modal-content">

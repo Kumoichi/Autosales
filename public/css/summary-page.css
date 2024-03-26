@@ -2,6 +2,10 @@ h1{
   text-align: center;  
 }
 
+h3{
+    color: #002869;
+}
+
 .summarycontainer {
     display:flex;
     flex-direction: column;
@@ -9,7 +13,6 @@ h1{
     align-items: center;
     height: auto;
     margin-top: 20px;
-
 }
 
 .targetContainer{
@@ -35,4 +38,103 @@ h1{
     cursor: pointer; 
     padding: 20px;
     border-width: 2px;
+}
+
+/* Apply CSS Reset to remove default margin and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+/* Define the grid container */
+.grid-container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Two columns with the first being smaller */
+    grid-template-rows: auto auto; /* Two rows with auto height */
+    grid-gap: 0; /* Remove any gap between grid items */
+}
+/* Define styles for grid items */
+.grid-item {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    
+    padding: 20px; /* Add some padding for spacing inside grid items */
+}
+/* Style for the left grid item */
+.left-grid-item {
+    background-color: lightgray; /* Background color for the left grid item */
+}
+/* Additional styles for other elements can be added here */
+
+.uniqueborderone{
+    border-left: 1px solid black;
+}
+
+.uniquebordertwo{
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.uniqueborderthree{
+    border-bottom: 1px solid black;
+}
+
+
+.target-content-template-box
+{
+    margin-top: 20px;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.target-content-template-box
+{
+    color: white;
+    font-size: 20px;
+}
+
+
+
+
+/* ここからpreview */
+
+#editableTextarea {
+    height: 100px; /* Set initial height */
+    resize: none; /* Prevent user from manually resizing */
+}
+
+.preview{
+    color: #002869;
+    position: relative;
+    background-color: rgb(201, 215, 230);
+    height: 1100px;
+}
+
+
+.image-saleslab {
+    position: absolute;
+    top: 10%;
+    right: 50%; /* Align the right of the element at 50% of the parent's width */
+    transform: translate(50%, -50%); /* Move the element back by 50% of its own width and 50% of its own height */
+    height: 100px;
+    width: 300px;
+}
+
+.preview-inside {
+    height: auto;
+    width: 75%;
+    padding: 10px;
+    position: absolute;
+    top: 55%; /* Align the top of the element at 50% of the parent's height */
+    left: 50%; /* Align the left of the element at 50% of the parent's width */
+    transform: translate(-50%, -50%); /* Move the element back by 50% of its own width and height */
+    background-color: white;
+}
+
+.firsttext{
+    width: 100%;
+    height: 200px;
 }

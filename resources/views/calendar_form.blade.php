@@ -20,8 +20,7 @@
         <input type="text" id="selected_time" name="selected_time" class="styled-input">
     </div>
 
-<!-- 
-    <button type="submit">Submit</button> -->
+
 </form>
 
 </div>

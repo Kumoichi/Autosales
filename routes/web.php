@@ -69,4 +69,3 @@ Route::get('/modal-page', [SendingController::class, 'modalPage'])->name('modal-
 Route::post('/handle-modal-selection', [ListSelectionController::class, 'handleModalSelection'])->name('handle.modal.selection');
 
 
-

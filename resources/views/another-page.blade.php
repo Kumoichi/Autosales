@@ -161,35 +161,70 @@ function updateSelectedRegion() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editable Box Example</title>
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
+        /* Set initial height for textarea */
+        #editableTextarea {
+            height: 100px; /* Set initial height */
+            resize: none; /* Prevent user from manually resizing */
         }
 
-        .container {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start; /* Align items at the start */
-            margin-bottom: 10px; /* Adjust spacing between rows */
+        .preview{
+            position: relative;
+            background-color: gray;
+            height: 600px;
         }
 
-        .container > div {
-            margin-right: 10px; /* Adjust spacing between divs */
+
+        .image-saleslab {
+            position: absolute;
+            top: 20%;
+            right: 50%; /* Align the right of the element at 50% of the parent's width */
+            transform: translate(50%, -50%); /* Move the element back by 50% of its own width and 50% of its own height */
+            height: 100px;
+            width: 300px;
         }
+
+        .preview-inside {
+            height: 400px;
+            width: 75%;
+            position: absolute;
+            top: 70%; /* Align the top of the element at 50% of the parent's height */
+            left: 50%; /* Align the left of the element at 50% of the parent's width */
+            transform: translate(-50%, -50%); /* Move the element back by 50% of its own width and height */
+            background-color: white;
+        }
+
+        .firsttext{
+            width: 100%;
+            height: 200px;
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <div>first</div>
-        <div>second</div>
-    </div>
-    <div>Third</div>
+
+<div class="preview">
+<div><img src="{{ asset('images/saleslab.png')}}" alt="User Icon" class="image-saleslab">
+</div>
+<div class="preview-inside" style="background-color: white;">
+    <!-- Using a multi-line textarea for longer text -->
+    <textarea class="firsttext" id="editableTextarea" oninput="autoExpand(this)">
+    1
+    2
+    3
+
+    </textarea>
+</div>
+</div>
+
+    <script>
+        function autoExpand(textarea) {
+            // Reset textarea height to default to properly calculate new height
+            textarea.style.height = '100px';
+            // Set new height based on scrollHeight
+            textarea.style.height = textarea.scrollHeight + 'px';
+        }
+    </script>
 </body>
 </html>
-        

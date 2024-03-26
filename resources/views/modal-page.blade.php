@@ -54,9 +54,25 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    height: 300px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     position: relative;
+}
+
+.modal-content-insidebox
+{
+    border: 1px solid black;
+    height: auto;
+    width: 900px;
+}
+
+.blue-box-section{
+    background-color: gray;
+}
+
+.box-section-inside{
+    margin-left: 50px;
 }
 
 .close {
@@ -86,13 +102,37 @@
 <!-- make modal window here -->
 <div id="myModal" class="modal">
     <div class="modal-content">
+
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="prefecture-modal-title">業種を選択してください</div>
+    <div class="prefecture-modal-title-underline"></div>
+
+
         <span class="close" onclick="closeModal()">&times;</span>
         <input type="checkbox" id="selectAllCheckbox" onclick="toggleAllCheckboxes()">全て<br>
-        <input type="checkbox" id="hokkaidoCheckbox" name="region" value="北海道" onclick="updateSelectedRegion()">
-        <label for="hokkaidoCheckbox">北海道</label><br>
-        <input type="checkbox" id="aomoriCheckbox" name="region" value="青森" onclick="updateSelectedRegion()">
-        <label for="aomoriCheckbox">青森</label>
         <input type="checkbox" id="noneCheckbox" onclick="deselectAll()">選択しない
+
+        <div class="modal-content-insidebox">
+            <div class="blue-box-section">
+                <input type="checkbox" id="selectTouhokuCheckbox" onclick="toggleCheckboxes('touhoku')">北海道、青森<br>
+                <div class="box-section-inside">
+                    <input type="checkbox" id="hokkaidoCheckbox" class="region-checkbox touhoku" name="region" value="北海道" onclick="updateSelectedRegion()">
+                    <label for="hokkaidoCheckbox">北海道</label><br>
+                    <input type="checkbox" id="aomoriCheckbox" class="region-checkbox touhoku" name="region" value="青森" onclick="updateSelectedRegion()">
+                    <label for="aomoriCheckbox">青森</label>
+                </div>
+            </div>
+
+            <div class="white-box-section">
+                <input type="checkbox" id="selectKantouCheckbox" onclick="toggleCheckboxes('kantou')">関東<br>
+                <div class="box-section-inside">
+                    <input type="checkbox" id="tokyoCheckbox" class="region-checkbox kantou" name="region" value="東京" onclick="updateSelectedRegion()">
+                    <label for="tokyoCheckbox">東京</label><br>
+                    <input type="checkbox" id="saitamaCheckbox" class="region-checkbox kantou" name="region" value="埼玉" onclick="updateSelectedRegion()">
+                    <label for="saitamaCheckbox">埼玉</label>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -112,42 +152,7 @@
 
 
 
-
-function toggleAllCheckboxes() {
-    var selectAllCheckbox = document.getElementById("selectAllCheckbox");
-    var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
-    var aomoriCheckbox = document.getElementById("aomoriCheckbox");
-
-    if (selectAllCheckbox.checked) {
-        hokkaidoCheckbox.checked = true;
-        aomoriCheckbox.checked = true;
-    } else {
-        hokkaidoCheckbox.checked = false;
-        aomoriCheckbox.checked = false;
-    }
-
-    // Update the selected regions accordingly
-    updateSelectedRegion();
-}
-
-
-function deselectAll() {
-    var selectAllCheckbox = document.getElementById("selectAllCheckbox");
-    var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
-    var aomoriCheckbox = document.getElementById("aomoriCheckbox");
-    var noneCheckbox = document.getElementById("noneCheckbox");
-
-    // Deselect all checkboxes
-    hokkaidoCheckbox.checked = false;
-    aomoriCheckbox.checked = false;
-    selectAllCheckbox.checked = false;
-
-    // Update the selected regions accordingly
-    updateSelectedRegion();
-}
-
-    // Make openModal function
-    function openModal(){
+function openModal(){
         document.getElementById("myModal").style.display = "block";
     }
 
@@ -163,38 +168,58 @@ function deselectAll() {
             modal.style.display = "none";
         }
     }
-// Initialize selectedRegion as an empty array
+
+    function toggleAllCheckboxes() {
+    var selectAllCheckbox = document.getElementById("selectAllCheckbox");
+    var checkboxes = document.querySelectorAll(".region-checkbox");
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
+    updateSelectedRegion();
+}
+
+
+
+function toggleCheckboxes(region) {
+        var selectCheckbox = document.getElementById("select" + region.charAt(0).toUpperCase() + region.slice(1) + "Checkbox");
+        var checkboxes = document.querySelectorAll(".region-checkbox." + region);
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.checked = selectCheckbox.checked;
+        });
+        updateSelectedRegion();
+    }
+
+
+// 選択しないが選択されたとき
+function deselectAll() {
+    var checkboxes = document.querySelectorAll(".region-checkbox");
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+    });
+
+    updateSelectedRegion();
+}
+
 var selectedRegion = [];
 
-// Make updateSelectedRegion() to pass the check box value to the nested-div-choice
-// get hokkaido and aomori check box value, make an array, store values there and then submit
-// Make updateSelectedRegion() to pass the checkbox value to the nested-div-choice
+// チェックマーク、すべて、選択しないが選択されたとき
 function updateSelectedRegion() {
-    var hokkaidoCheckbox = document.getElementById("hokkaidoCheckbox");
-    var aomoriCheckbox = document.getElementById("aomoriCheckbox");
+    var checkboxes = document.querySelectorAll(".region-checkbox");
+    var selectedRegion = [];
 
-    selectedRegion = [];
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            selectedRegion.push(checkbox.value);
+        }
+    });
 
-    if(hokkaidoCheckbox.checked) {
-        selectedRegion.push(1); // Push 1 for 北海道
-    }
-    if(aomoriCheckbox.checked) {
-        selectedRegion.push(2); // Push 2 for 青森
-    }
-
-    // Display the selected regions in the nested-div-choice
-    var selectedRegionsText = [];
-    if (selectedRegion.includes(1)) {
-        selectedRegionsText.push("北海道");
-    }
-    if (selectedRegion.includes(2)) {
-        selectedRegionsText.push("青森");
-    }
-    document.querySelector(".nested-div-choice").innerText = selectedRegionsText.join(",");
-
-    // Store selected regions as integers in the hidden input
+    document.querySelector(".nested-div-choice").innerText = selectedRegion.join(",");
     document.getElementById("selectedRegionInput").value = JSON.stringify(selectedRegion);
 }
+
 
 
 function submitForm()

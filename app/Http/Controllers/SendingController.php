@@ -49,16 +49,8 @@ class SendingController extends Controller
 
     public function handleTargetSelection(Request $request)
 {
-    $targetName = $request->input('targetName');
-    $targetNumberMapping = $this->getTargetNameMapping();
-
-    // Get the target number corresponding to the target name
-    $targetNumber = $targetNumberMapping[$targetName] ?? null;
-
-    // Check if the target name exists in the mapping
-    if ($targetNumber !== null) {
-        $request->session()->put('targetNumber', $targetNumber);
-    }
+    $target = $request->input('targetName');
+    $request->session()->put('target', $target);
     return redirect()->route('summary-page');
 }
 
@@ -73,11 +65,50 @@ function getTargetNameMapping()
 }
 
 
-public function showSummaryPage()
+
+function getContentLetter($number)
 {
-    return view('sendingpages/summary-page');
+    // Define an array of textual representations for numbers
+    $words = [
+        1 => 'A',
+        2 => 'B',
+        3 => 'C',
+        4 => 'D',
+        5 => 'E',
+        6 => 'F',
+        7 => 'G',
+        8 => 'H',
+        9 => 'I',
+        10 => 'J'
+        // Add more numbers if needed
+    ];
+
+    // Check if the number exists in the array
+    if (isset($words[$number])) {
+        return $words[$number];
+    } else {
+        // Return the number itself if not found in the array
+        return (string) $number;
+    }
 }
 
+public function showSummaryPage(Request $request)
+{
+    $target = $request->session()->get('target');
+    $contentNumber = $request->session()->get('contentURL');
+    $templateTitle = $request->session()->get('templateTitle');
+
+
+    // Get the textual representation of the content number
+    $contentWord =  $this->getContentLetter($contentNumber); // Added a backslash (\) before getContentLetter
+
+    // Pass both 'target' and 'convertedWord' to the view
+    return view('sendingpages/summary-page', [
+        'target' => $target,
+        'contentWord' => $contentWord,
+        'templateTitle' => $templateTitle,
+    ]);
+}
 
 
 // ここから下練習ファイル
@@ -116,14 +147,14 @@ public function modalPage()
 }
     
 
-public function submitForm(Request $request)
-    {
-        // Retrieve the selected box value from the form data
-        $selectedBox = $request->input('selectedBox');
-        dd($selectedBox);
+// public function submitForm(Request $request)
+//     {
+//         // Retrieve the selected box value from the form data
+//         $selectedBox = $request->input('selectedBox');
+//         dd($selectedBox);
 
-        // Now you can process the selected box value as needed, for example, save it to the database
-        // You can also return a response if needed
-    }
+//         // Now you can process the selected box value as needed, for example, save it to the database
+//         // You can also return a response if needed
+//     }
 }
 

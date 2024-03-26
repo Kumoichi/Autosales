@@ -173,8 +173,11 @@ public function handleTestSelection(Request $request)
 
 public function handleModalSelection(Request $request)
     {
-        $data = $request->input('coins');
-        dd($data);
+        $selectedRegions = $request->input('selectedRegion');
+        $selectedRegionArray = json_decode($selectedRegions);
+
+        dd($selectedRegionArray);
+
     }
 
     public function getSessionData(Request $request)

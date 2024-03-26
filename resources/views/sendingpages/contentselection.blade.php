@@ -22,30 +22,30 @@
         <div onclick="selectContent(1, this)">
             <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
         </div>
-        <div onclick="selectContent(2, this)">
-            <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
-        </div>
         <div onclick="selectContent(3, this)">
-            <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
-        </div>
-        <div onclick="selectContent(4, this)">
             <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
         </div>
         <div onclick="selectContent(5, this)">
             <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
         </div>
-    </div>
-    <div class="containers">
-        <div onclick="selectContent(6, this)">
-            <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
-        </div>
         <div onclick="selectContent(7, this)">
             <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
         </div>
-        <div onclick="selectContent(8, this)">
+        <div onclick="selectContent(9, this)">
             <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
         </div>
-        <div onclick="selectContent(9, this)">
+    </div>
+    <div class="containers">
+        <div onclick="selectContent(2, this)">
+            <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
+        </div>
+        <div onclick="selectContent(4, this)">
+            <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
+        </div>
+        <div onclick="selectContent(6, this)">
+            <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
+        </div>
+        <div onclick="selectContent(8, this)">
             <img src="{{ asset('images/contents.png')}}" alt="User Icon" style="height: 160px; width: 300px;">
         </div>
         <div onclick="selectContent(10, this)">
