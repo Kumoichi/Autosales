@@ -109,8 +109,8 @@ services:
         build: 
             context: ./app/Scraping  # Dockerfileのディレクトリを指定
         volumes:
-            - type: bind
             -  /var/run/docker.sock:/var/run/docker.sock
+            - type: bind
             - source: ./app/Scraping
             - target: /opt/app
         restart: always
