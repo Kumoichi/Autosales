@@ -109,10 +109,10 @@ services:
         build: 
             context: ./app/Scraping  # Dockerfileのディレクトリを指定
         volumes:
-            -  /var/run/docker.sock:/var/run/docker.sock
+            - /var/run/docker.sock:/var/run/docker.sock
             - type: bind
-            - source: ./app/Scraping
-            - target: /opt/app
+              source: ./app/Scraping
+              target: /opt/app
         restart: always
         environment:
             DB_USER: '${DB_USERNAME}'  # 環境変数からの取得
